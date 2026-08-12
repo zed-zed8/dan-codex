@@ -8,7 +8,13 @@
 </head>
 
 <body>
+    <?php include "../template/header.php"; ?>
 
+
+    <h1>Selamat Datang Di Dashboard Admin</h1>
+
+
+    <?php include "../template/footer.php"; ?>
 </body>
 
 </html>

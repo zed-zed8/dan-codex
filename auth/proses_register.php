@@ -9,5 +9,5 @@ if (isset($_POST['btnregister'])) {
     $users = new users();
     $users->create($username, $password);
 
-    header("location:login.php");
+    header("location:../public/index.php");
 }

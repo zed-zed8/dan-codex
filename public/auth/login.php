@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 
 <body>
-    <h1>Register</h1>
+    <h1>Login</h1>
 
-    <form action="proses_register.php" method="post">
+    <form action="/../auth/proses_login.php" method="post">
         <label>Username</label><br>
         <input type="text" name="username" required>
         <br><br>
@@ -19,8 +19,17 @@
         <input type="password" name="password" required>
         <br><br>
 
-        <button type="submit" name="btnregister">Login</button>
+        <button type="submit" name="btnlogin">Login</button>
     </form>
+
+    <a href="register.php">register</a>
 </body>
 
 </html>
+
+<?php
+session_start();
+echo "<pre>";
+var_dump($_SESSION);
+echo "</pre>";
+?>

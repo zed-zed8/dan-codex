@@ -4,7 +4,7 @@ class users extends database
 {
     public function create(string $username, string $password): void
     {
-        $password = MD5($password);
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
         mysqli_query(
             $this->koneksi,
@@ -14,7 +14,7 @@ class users extends database
 
     public function get_user(string $username, string $password): bool|mysqli_result
     {
-        $password = md5($password);
+        $password = password_hash($password, PASSWORD_DEFAULT);
         $result = mysqli_query(
             $this->koneksi,
             "SELECT * FROM users WHERE username = '$username' and password = '$password'"
