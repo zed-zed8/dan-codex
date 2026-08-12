@@ -24,6 +24,8 @@ class database
 
 //? database table
 include "class/users.php";
+include "class/produk.php";
+include "class/pesanan.php";
 
 //! Koneksi DB
 $db = new database();

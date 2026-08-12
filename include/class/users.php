@@ -1,5 +1,7 @@
 <?php
 
+use FFI\Exception;
+
 class users extends database
 {
     public function create(string $username, string $password): void
@@ -12,13 +14,15 @@ class users extends database
         );
     }
 
-    public function get_user(string $username, string $password): bool|mysqli_result
+    public function get_user(string $username): bool|mysqli_result
     {
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $result = mysqli_query(
-            $this->koneksi,
-            "SELECT * FROM users WHERE username = '$username' and password = '$password'"
-        );
+        $sql = "SELECT * FROM users WHERE username = ?";
+        $stmt = mysqli_prepare($this->koneksi, $sql);
+
+        mysqli_stmt_bind_param($stmt, "s", $username);
+        mysqli_stmt_execute($stmt);
+
+        $result = mysqli_stmt_get_result($stmt);
         return $result;
     }
 
@@ -28,21 +32,16 @@ class users extends database
         $stmt = mysqli_prepare($this->koneksi, $sql);
 
         mysqli_stmt_bind_param($stmt, "s", $username);
-        $result = mysqli_stmt_execute($stmt);
+        mysqli_stmt_execute($stmt);
 
         $user_data = mysqli_stmt_get_result($stmt);
 
         foreach ($user_data as $value) {
-            switch ($value['role']) {
-                case 'user':
-                    return "user";
-                case 'admin':
-                    return "admin";
-
-                default:
-                    return "user check gagal";
-            }
+            return match ($value['role']) {
+                'user' => 'user',
+                'admin' => 'admin',
+            };
         }
-        return "user check gagal";
+        return error_log("userCheck fail");
     }
 }

@@ -5,7 +5,9 @@ include "../include/database.php";
 session_start();
 if (!isset($_SESSION['username'])) {
     header("location:auth/login.php");
+    exit();
 }
+
 
 $users = new users();
 switch ($users->userCheck($_SESSION['username'])) {
@@ -14,7 +16,7 @@ switch ($users->userCheck($_SESSION['username'])) {
         break;
 
     case 'admin':
-        header("location:admin/dashboard.php");
+        header("location:admin/dashboard");
         break;
 
     default:

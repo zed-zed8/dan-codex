@@ -10,4 +10,5 @@ if (isset($_POST['btnregister'])) {
     $users->create($username, $password);
 
     header("location:../public/index.php");
+    exit();
 }
