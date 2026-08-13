@@ -25,7 +25,7 @@ class produk extends database
         $sql = "SELECT * FROM produk WHERE id = ?";
         $stmt = mysqli_prepare($this->koneksi, $sql);
 
-        mysqli_stmt_bind_param($stmt, "s", $id_produk);
+        mysqli_stmt_bind_param($stmt, "i", $id_produk);
         mysqli_stmt_execute($stmt);
 
         return mysqli_stmt_get_result($stmt);
@@ -47,5 +47,18 @@ class produk extends database
     public function delete(int $id_produk): void
     {
         mysqli_query($this->koneksi, "DELETE FROM produk WHERE id = '$id_produk'");
+    }
+
+    public function get_nama(int $id): string
+    {
+        $sql = "SELECT nama_produk FROM produk WHERE id = ?";
+        $stmt = mysqli_prepare($this->koneksi, $sql);
+
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        mysqli_stmt_execute($stmt);
+
+        $result = mysqli_stmt_get_result($stmt);
+        $data = mysqli_fetch_assoc($result);
+        return $data['nama_produk'];
     }
 }

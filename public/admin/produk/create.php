@@ -5,7 +5,7 @@ include __DIR__ . "/../../../include/database.php";
 ?>
 
 <!-- Start Header -->
-<?php include __DIR__ . "/../template/header.php"; ?>
+<?php include __DIR__ . "/../template/head.php"; ?>
 <!-- End Header -->
 
 <body>

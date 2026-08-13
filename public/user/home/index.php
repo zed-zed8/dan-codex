@@ -11,9 +11,8 @@ include __DIR__ . "/../../../include/database.php";
 <body>
     <?php include __DIR__ . "/../template/header.php"; ?>
 
-    <?php include __DIR__ . "/../template/sidebar.php"; ?>
+    <h1>Selamat Datang Di Assalaam E-Commerce</h1>
 
-    <a href="create.php">Tambah Produk</a>
 
     <ul>
         <?php $produk = new produk(); ?>
@@ -30,17 +29,14 @@ include __DIR__ . "/../../../include/database.php";
                 <p><?= $data['deskripsi'] ?></p>
                 <p><?= $data['kategori'] ?></p>
                 <p><?= number_format($data['stok'], 0, ",", ".") ?></p>
-                <form action="edit.php" method="post">
-                    <input type="hidden" name="id_produk" value="<?= $data['id'] ?>">
-                    <button type="submit">Edit</button>
-                </form>
                 <form action="proses.php" method="post">
                     <input type="hidden" name="id_produk" value="<?= $data['id'] ?>">
-                    <button type="submit" name="delete">Delete</button>
+                    <button type="submit" name="masuk_keranjang">Masukan ke keranjang</button>
                 </form>
             </li>
         <?php endforeach ?>
     </ul>
+
 
     <?php include __DIR__ . "/../template/footer.php"; ?>
 </body>

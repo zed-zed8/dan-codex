@@ -12,7 +12,7 @@ if (!isset($_SESSION['username'])) {
 $users = new users();
 switch ($users->userCheck($_SESSION['username'])) {
     case 'user':
-        header("location:user/index.php");
+        header("location:user/home");
         break;
 
     case 'admin':

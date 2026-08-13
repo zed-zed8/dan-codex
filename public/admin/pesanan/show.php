@@ -16,15 +16,15 @@ include __DIR__ . "/../../../include/database.php";
     <a href="index.php">back</a>
 
     <ul>
+        <?php $pesanan = new pesanan(); ?>
         <?php $produk = new produk(); ?>
-        <?php foreach ($produk->get_data_by_id($_POST['id_produk']) as $data) : ?>
+        <?php $no = 0; ?>
+        <?php foreach ($pesanan->get_detail_pesanan($_POST['id_pesanan']) as $data) : ?>
             <li>
-                <img src="../../<?= htmlspecialchars($data['path_gambar']) ?>" alt="insert img here" width="100" height="100">
-                <p><?= $data['nama_produk'] ?> RP<?= number_format($data['harga'], 0, ",", ".") ?></p>
-                <p><?= $data['deskripsi'] ?></p>
-                <p><?= $data['kategori'] ?></p>
-                <p></p>
-                <p><?= number_format($data['stok'], 0, ",", ".") ?></p>
+                <p><?= ++$no ?></p>
+                <p><?= $produk->get_nama($data['produk_id']) ?></p>
+                <p><?= number_format($data['jumlah'], 0, ",", ".") ?></p>
+                <p>RP<?= number_format($data['harga_satuan'], 0, ",", ".") ?></p>
             </li>
         <?php endforeach ?>
     </ul>

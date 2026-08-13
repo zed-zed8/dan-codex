@@ -11,9 +11,20 @@ class pesanan extends database
         );
     }
 
-    public function get_data(): mysqli|bool
+    public function get_data(): mysqli_result|bool
     {
-        $data = mysqli_query($this->koneksi, "SELECT * FROM 'pesanan'");
+        $data = mysqli_query($this->koneksi, "SELECT * FROM pesanan");
         return $data;
+    }
+
+    public function get_detail_pesanan(int $pesanan_id): bool|mysqli_result
+    {
+        $sql = "SELECT * FROM detail_pesanan WHERE pesanan_id = ?";
+        $stmt = mysqli_prepare($this->koneksi, $sql);
+
+        mysqli_stmt_bind_param($stmt, "i", $pesanan_id);
+        mysqli_stmt_execute($stmt);
+
+        return mysqli_stmt_get_result($stmt);
     }
 }
