@@ -5,7 +5,5 @@
         <li><a href="../tentang">Tentang</a></li>
     </ul>
 
-    <a href="../keranjang">Keranjang</a>
-
     <a href="../../../auth/logout.php">logout</a>
 </nav>

@@ -12,6 +12,7 @@ if (!isset($_SESSION['username'])) {
 $users = new users();
 switch ($users->userCheck($_SESSION['username'])) {
     case 'user':
+        $_SESSION['keranjang'] = [];
         header("location:user/home");
         break;
 
