@@ -13,7 +13,7 @@ class users extends database
         );
     }
 
-    // mendapatkan semua data user
+    // mendapatkan semua data user bedasarkan username
     public function get_user(string $username): bool|mysqli_result
     {
         $sql = "SELECT * FROM users WHERE username = ?";
@@ -26,6 +26,7 @@ class users extends database
         return $result;
     }
 
+    // mendapatkan data semua user
     public function get_data(): bool|mysqli_result
     {
         $sql = "SELECT * FROM users";

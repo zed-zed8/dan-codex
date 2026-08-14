@@ -57,6 +57,18 @@ class pesanan extends database
         return mysqli_stmt_get_result($stmt);
     }
 
+    // mendapatkan semua data bedasarkan user
+    public function get_data_user(int $user_id): mysqli_result|bool
+    {
+        $sql = "SELECT * FROM pesanan WHERE user_id = ? ORDER BY tanggal_dibuat DESC";
+        $stmt = mysqli_prepare($this->koneksi, $sql);
+
+        mysqli_stmt_bind_param($stmt, "i", $user_id);
+        mysqli_stmt_execute($stmt);
+
+        return mysqli_stmt_get_result($stmt);
+    }
+
 
     // menghitung total pesanan
     public function total_pesanan(): int
@@ -86,5 +98,42 @@ class pesanan extends database
             "SELECT * FROM pesanan WHERE `status` = 'done'"
         );
         return mysqli_num_rows($data);
+    }
+
+
+    // menghitung total pesanan bedasarkan user
+    public function total_pesanan_by_user(int $user_id): int
+    {
+        $sql = "SELECT * FROM pesanan WHERE user_id = ?";
+        $stmt = mysqli_prepare($this->koneksi, $sql);
+
+        mysqli_stmt_bind_param($stmt, "i", $user_id);
+        mysqli_stmt_execute($stmt);
+
+        return mysqli_num_rows(mysqli_stmt_get_result($stmt));
+    }
+
+    // menghitung total pesanan pending bedasarkan user
+    public function total_pesanan_pending_by_user(int $user_id): int
+    {
+        $sql = "SELECT * FROM pesanan WHERE user_id = ? AND `status` = 'pending'";
+        $stmt = mysqli_prepare($this->koneksi, $sql);
+
+        mysqli_stmt_bind_param($stmt, "i", $user_id);
+        mysqli_stmt_execute($stmt);
+
+        return mysqli_num_rows(mysqli_stmt_get_result($stmt));
+    }
+
+    // menghitung total pesanan done bedasarkan user
+    public function total_pesanan_done_by_user(int $user_id): int
+    {
+        $sql = "SELECT * FROM pesanan WHERE user_id = ? AND `status` = 'done'";
+        $stmt = mysqli_prepare($this->koneksi, $sql);
+
+        mysqli_stmt_bind_param($stmt, "i", $user_id);
+        mysqli_stmt_execute($stmt);
+
+        return mysqli_num_rows(mysqli_stmt_get_result($stmt));
     }
 }
