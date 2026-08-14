@@ -19,11 +19,11 @@ include __DIR__ . "/../../../include/database.php";
     <?php foreach ($produk->get_data_by_id($_POST['id_produk']) as $data) : ?>
         <form action="proses.php" method="post" enctype="multipart/form-data">
             <label for="nama_produk">Nama Produk</label><br>
-            <input type="text" name="nama_produk" id="nama_produk" required placeholder="<?= $data['nama_produk'] ?>">
+            <input type="text" name="nama_produk" id="nama_produk" required value="<?= $data['nama_produk'] ?>">
             <br><br>
 
             <label for="deskripsi">Deskripsi</label><br>
-            <input type="text" name="deskripsi" id="deskripsi" required placeholder="<?= $data['deskripsi'] ?>">
+            <input type="text" name="deskripsi" id="deskripsi" required value="<?= $data['deskripsi'] ?>">
             <br><br>
 
             <label for="kategori">Kategori</label><br>
@@ -34,16 +34,16 @@ include __DIR__ . "/../../../include/database.php";
             <br><br>
 
             <label for="harga">Harga</label><br>
-            <input type="number" name="harga" id="harga" required placeholder="<?= $data['harga'] ?>">
+            <input type="number" name="harga" id="harga" required value="<?= $data['harga'] ?>">
             <br><br>
 
             <label for="stok">Stok</label><br>
-            <input type="number" name="stok" id="stok" required placeholder="<?= $data['stok'] ?>">
+            <input type="number" name="stok" id="stok" required value="<?= $data['stok'] ?>">
             <br><br>
 
             <img src="../../<?= htmlspecialchars($data['path_gambar']) ?>" alt="insert img here" width="100" height="100">
-            <label for="gambar">Foto gambar baru</label><br>
-            <input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg, image/webp" required>
+            <label for="gambar">Foto gambar baru(kalo tidak ada gambar baru lewati saja)</label><br>
+            <input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg, image/webp">
             <br><br>
 
             <button type="submit" name="edit_produk">Edit Produk</button>

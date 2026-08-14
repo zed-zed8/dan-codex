@@ -2,13 +2,39 @@
 
 class pesanan extends database
 {
-    public function create(int $user_id, int $total_harga): void
+    public function create(int $user_id, int $total_harga, array $keranjang): void
     {
+        // isi keranjang [['produk_id' => , 'jumlah' => , 'harga_satuan' => ], ]
         $tanggal_dibuat = date('Y-m-d');
-        mysqli_query(
-            $this->koneksi,
-            "INSERT INTO pesanan VALUES (NULL, $user_id, '$total_harga', DEFAULT, '$tanggal_dibuat')"
-        );
+
+        $sql = "INSERT INTO pesanan VALUES (NULL, ?, ?, DEFAULT, ?)";
+        $stmt = mysqli_prepare($this->koneksi, $sql);
+
+        mysqli_stmt_bind_param($stmt, "iis", $user_id, $total_harga, $tanggal_dibuat);
+        mysqli_stmt_execute($stmt);
+
+        // mendapatkan id pesanan
+        $pesanan_id_query = mysqli_query($this->koneksi, "SELECT id FROM pesanan ORDER BY id DESC LIMIT 1");
+        $pesanan_id_data = mysqli_fetch_assoc($pesanan_id_query);
+        $pesanan_id = $pesanan_id_data['id'];
+
+        // menambahkan detail pesanan
+        foreach ($keranjang as $value) {
+            $produk_id = $value['produk_id'];
+            $jumlah = $value['jumlah'];
+            $harga_satuan = $value['harga_satuan'];
+            $this->create_detail_pesanan($pesanan_id, $produk_id, $jumlah, $harga_satuan);
+        }
+    }
+
+    // menambahkan ke detail_pesanan
+    private function create_detail_pesanan(int $pesanan_id, int $produk_id, int $jumlah, int $harga_satuan): void
+    {
+        $sql = "INSERT INTO detail_pesanan VALUES (NULL, ?, ?, ?, ?)";
+        $stmt = mysqli_prepare($this->koneksi, $sql);
+
+        mysqli_stmt_bind_param($stmt, "iiii", $pesanan_id, $produk_id, $jumlah, $harga_satuan);
+        mysqli_stmt_execute($stmt);
     }
 
     public function get_data(): mysqli_result|bool

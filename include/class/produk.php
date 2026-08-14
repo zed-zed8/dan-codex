@@ -61,4 +61,26 @@ class produk extends database
         $data = mysqli_fetch_assoc($result);
         return $data['nama_produk'];
     }
+
+    public function reduce_stok(int $id_produk, int $jumlah): void
+    {
+        // mendapatkan stok lama
+        $sql = "SELECT stok FROM produk WHERE id = ?";
+        $stmt = mysqli_prepare($this->koneksi, $sql);
+
+        mysqli_stmt_bind_param($stmt, "i", $id_produk);
+        mysqli_stmt_execute($stmt);
+
+        $result = mysqli_stmt_get_result($stmt);
+        $data = mysqli_fetch_assoc($result);
+        // melakukan kalkulasi
+        $stok_baru = $data['stok'] - $jumlah;
+
+        // update stok
+        $sql = "UPDATE produk SET stok = ? WHERE id = ?";
+        $stmt = mysqli_prepare($this->koneksi, $sql);
+
+        mysqli_stmt_bind_param($stmt, "ii", $stok_baru, $id_produk);
+        mysqli_stmt_execute($stmt);
+    }
 }
