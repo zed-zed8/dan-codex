@@ -2,6 +2,7 @@
 
 class users extends database
 {
+    // register user baru
     public function create(string $username, string $email, string $password): void
     {
         $password = password_hash($password, PASSWORD_DEFAULT);
@@ -12,6 +13,7 @@ class users extends database
         );
     }
 
+    // mendapatkan semua data user
     public function get_user(string $username): bool|mysqli_result
     {
         $sql = "SELECT * FROM users WHERE username = ?";
@@ -34,6 +36,7 @@ class users extends database
         return $result;
     }
 
+    // mengecek akun itu admin atau user 
     public function userCheck(string $username): string
     {
         $sql = "SELECT * FROM users WHERE username = ?";
@@ -53,7 +56,8 @@ class users extends database
         return error_log("userCheck fail");
     }
 
-    public function get_nama(int $id): string
+    // mendapatkan username
+    public function get_username(int $id): string
     {
         $sql = "SELECT username FROM users WHERE id = ?";
         $stmt = mysqli_prepare($this->koneksi, $sql);

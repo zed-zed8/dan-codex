@@ -8,19 +8,19 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-
+// mengecek akun
 $users = new users();
 switch ($users->userCheck($_SESSION['username'])) {
     case 'user':
         $_SESSION['keranjang'] = [];
         header("location:user/home");
-        break;
+        exit();
 
     case 'admin':
         header("location:admin/dashboard");
-        break;
+        exit();
 
     default:
-        error_log("userCheck fail");
-        break;
+        header("location:user/home");
+        exit();
 }

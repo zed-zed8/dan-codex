@@ -2,6 +2,7 @@
 
 class pesanan extends database
 {
+    // membuat pesanan
     public function create(int $user_id, int $total_harga, array $keranjang): void
     {
         // isi keranjang [['produk_id' => , 'jumlah' => , 'harga_satuan' => ], ]
@@ -37,12 +38,14 @@ class pesanan extends database
         mysqli_stmt_execute($stmt);
     }
 
+    // mendapatkan semua data
     public function get_data(): mysqli_result|bool
     {
-        $data = mysqli_query($this->koneksi, "SELECT * FROM pesanan");
+        $data = mysqli_query($this->koneksi, "SELECT * FROM pesanan ORDER BY tanggal_dibuat DESC");
         return $data;
     }
 
+    // mendapatkan semua data dari detail_pesanan
     public function get_detail_pesanan(int $pesanan_id): bool|mysqli_result
     {
         $sql = "SELECT * FROM detail_pesanan WHERE pesanan_id = ?";
@@ -52,5 +55,36 @@ class pesanan extends database
         mysqli_stmt_execute($stmt);
 
         return mysqli_stmt_get_result($stmt);
+    }
+
+
+    // menghitung total pesanan
+    public function total_pesanan(): int
+    {
+        $data = mysqli_query(
+            $this->koneksi,
+            "SELECT * FROM pesanan"
+        );
+        return mysqli_num_rows($data);
+    }
+
+    // menghitung total pesanan yang sedang diproses
+    public function total_pesanan_pending(): int
+    {
+        $data = mysqli_query(
+            $this->koneksi,
+            "SELECT * FROM pesanan WHERE `status` = 'pending'"
+        );
+        return mysqli_num_rows($data);
+    }
+
+    // menghitung total pesanan yang sudah diproses
+    public function total_pesanan_done(): int
+    {
+        $data = mysqli_query(
+            $this->koneksi,
+            "SELECT * FROM pesanan WHERE `status` = 'done'"
+        );
+        return mysqli_num_rows($data);
     }
 }

@@ -62,6 +62,7 @@ class produk extends database
         return $data['nama_produk'];
     }
 
+    // mengurangi stok produk setelah membeli
     public function reduce_stok(int $id_produk, int $jumlah): void
     {
         // mendapatkan stok lama
@@ -82,5 +83,15 @@ class produk extends database
 
         mysqli_stmt_bind_param($stmt, "ii", $stok_baru, $id_produk);
         mysqli_stmt_execute($stmt);
+    }
+
+    // menghitung total produk
+    public function total_produk(): int
+    {
+        $data = mysqli_query(
+            $this->koneksi,
+            "SELECT * FROM produk"
+        );
+        return mysqli_num_rows($data);
     }
 }

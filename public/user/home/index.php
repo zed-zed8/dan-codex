@@ -11,9 +11,10 @@ include __DIR__ . "/../../../include/database.php";
 <body>
     <?php include __DIR__ . "/../template/header.php"; ?>
 
-    <a href="../keranjang">Keranjang</a>
-
     <h1>Selamat Datang Di Assalaam E-Commerce</h1>
+
+    <?php session_start(); ?>
+    <h2>Halo, <?= $_SESSION['username']; ?></h2>
 
 
     <ul>

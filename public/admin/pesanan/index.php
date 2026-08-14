@@ -24,10 +24,10 @@ include __DIR__ . "/../../../include/database.php";
         <?php foreach ($pesanan->get_data() as $data) : ?>
             <li>
                 <p><?= ++$no ?></p>
-                <p><?= $users->get_nama($data['user_id']) ?></p>
+                <p><?= $users->get_username($data['user_id']) ?></p>
+                <p><?= $data['tanggal_dibuat'] ?></p>
                 <p><?= $data['total_harga'] ?></p>
                 <p><?= $data['status'] ?></p>
-                <p><?= $data['tanggal_dibuat'] ?></p>
 
                 <form action="show.php" method="post">
                     <input type="hidden" name="id_pesanan" value="<?= $data['id'] ?>">
