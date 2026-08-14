@@ -1,9 +1,4 @@
-<?php
-
-include __DIR__ . "/../../../include/database.php";
-
-?>
-
+<?php include __DIR__ . "/../template/include.php"; ?>
 
 <!-- Start Header -->
 <?php include __DIR__ . "/../template/head.php"; ?>

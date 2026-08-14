@@ -5,7 +5,7 @@
         <!-- <li><a href="../tentang">Tentang</a></li>  -->
     </ul>
 
-    <li><a href="../keranjang">Keranjang</a></li>
+    <a href="../keranjang">Keranjang</a>
 
     <a href="../../../auth/logout.php">logout</a>
 </nav>

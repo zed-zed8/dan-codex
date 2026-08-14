@@ -1,9 +1,8 @@
 <!-- Bikin Proses membeli -->
 <?php
 
-include __DIR__ . "/../../../include/database.php";
+include __DIR__ . "/../template/include.php";
 
-session_start();
 if (isset($_POST['beli'])) {
     $session_keranjang = $_SESSION['keranjang'];
     $jumlah = $_POST['jumlah'];

@@ -1,8 +1,4 @@
-<?php
-
-include __DIR__ . "/../../../include/database.php";
-
-?>
+<?php include __DIR__ .  "/../template/include.php"; ?>
 
 <!-- Start Header -->
 <?php include __DIR__ . "/../template/head.php"; ?>
@@ -17,7 +13,6 @@ include __DIR__ . "/../../../include/database.php";
         <?php $produk = new produk(); ?>
         <?php foreach ($produk->get_data() as $data) : ?>
             <li>
-
                 <form action="show.php" method="post">
                     <input type="hidden" name="id_produk" value="<?= $data['id'] ?>">
                     <button type="submit">

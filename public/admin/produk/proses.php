@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . "/../../../include/database.php";
+include __DIR__ . "/../template/include.php";
 
 $produk = new produk();
 

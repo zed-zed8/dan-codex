@@ -1,8 +1,4 @@
-<?php
-
-include __DIR__ . "/../../../include/database.php";
-
-?>
+<?php include __DIR__ . "/../template/include.php"; ?>
 
 <!-- Start Header -->
 <?php include __DIR__ . "/../template/head.php"; ?>
@@ -13,9 +9,7 @@ include __DIR__ . "/../../../include/database.php";
 
     <h1>Selamat Datang Di Assalaam E-Commerce</h1>
 
-    <?php session_start(); ?>
     <h2>Halo, <?= $_SESSION['username']; ?></h2>
-
 
     <ul>
         <?php $produk = new produk(); ?>
