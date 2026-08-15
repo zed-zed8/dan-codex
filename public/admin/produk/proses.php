@@ -16,11 +16,11 @@ if (isset($_POST['tambah_produk'])) {
     $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
     $uniqueName = bin2hex(random_bytes(16)) . '.' . $extension;
     // path image
-    $uploadFolder = __DIR__ . "/../../assets/img_produk";
+    $uploadFolder = __DIR__ . "/../../assets/img/img_produk";
     $path_gambar = $uploadFolder . "/" . $uniqueName;
     // move file to  img folder
     if (move_uploaded_file($file['tmp_name'], $path_gambar)) {
-        $webPath      = "assets/img_produk/" . $uniqueName;
+        $webPath      = "assets/img/img_produk/" . $uniqueName;
         $produk->create($nama_produk, $deskripsi, $kategori, $harga, $stok, $webPath);
     }
 }
@@ -37,11 +37,11 @@ if (isset($_POST['edit_produk'])) {
     $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
     $uniqueName = bin2hex(random_bytes(16)) . '.' . $extension;
     // path image
-    $uploadFolder = __DIR__ . "/../../assets/img_produk";
+    $uploadFolder = __DIR__ . "/../../assets/img/img_produk";
     $path_gambar = $uploadFolder . "/" . $uniqueName;
     // move file to  img folder
     if (move_uploaded_file($file['tmp_name'], $path_gambar)) {
-        $webPath      = "assets/img_produk/" . $uniqueName;
+        $webPath      = "assets/img/img_produk/" . $uniqueName;
         $produk->create($nama_produk, $deskripsi, $kategori, $harga, $stok, $webPath);
     }
 }

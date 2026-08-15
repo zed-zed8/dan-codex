@@ -23,7 +23,7 @@
                 <p><?= $data['email'] ?></p>
 
                 <form action="show.php" method="post">
-                    <input type="hidden" name="id_pesanan" value="<?= $data['id'] ?>">
+                    <input type="hidden" name="username" value="<?= $data['username'] ?>">
                     <button type="submit" name="lihat">Lihat Profile</button>
                 </form>
             </li>
