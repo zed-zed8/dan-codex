@@ -11,4 +11,8 @@
 
     <!-- title -->
     <title>Assacom</title>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
 </head>
