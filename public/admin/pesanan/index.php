@@ -9,30 +9,50 @@
 
     <?php include __DIR__ . "/../template/sidebar.php"; ?>
 
-    <h1>Pesanan</h1>
+    <main class="pesanan">
+        <h1>Pesanan</h1>
 
-    <p>Daftar semua pesanan yang masuk</p>
+        <p>Daftar semua pesanan yang masuk</p>
 
-    <ul>
-        <?php $pesanan = new pesanan(); ?>
-        <?php $users = new users(); ?>
-        <?php $no = 0 ?>
-        <?php foreach ($pesanan->get_data() as $data) : ?>
-            <li>
-                <p><?= ++$no ?></p>
-                <p><?= $users->get_username($data['user_id']) ?></p>
-                <p><?= $data['tanggal_dibuat'] ?></p>
-                <p><?= $data['total_harga'] ?></p>
-                <p><?= $data['status'] ?></p>
+        <section class="card me-5">
+            <div class="container text-center overflow-auto">
+                <div class="row bg-info fw-bold p-2">
+                    <div class="col">NO</div>
+                    <div class="col">username</div>
+                    <div class="col">Tanggal</div>
+                    <div class="col">Total Harga</div>
+                    <div class="col">Status</div>
+                    <div class="col">Aksi</div>
+                </div>
+                <?php $pesanan = new pesanan(); ?>
+                <?php $users = new users(); ?>
+                <?php $no = 0 ?>
+                <?php foreach ($pesanan->get_data() as $data) : ?>
+                    <div class="row p-2">
+                        <div class="col"><?= ++$no ?></div>
+                        <div class="col"><?= $users->get_username($data['user_id']) ?></div>
+                        <div class="col"><?= $data['tanggal_dibuat'] ?></div>
+                        <div class="col"><?= $data['total_harga'] ?></div>
+                        <div class="col"><?= $data['status'] ?></div>
 
-                <form action="show.php" method="post">
-                    <input type="hidden" name="id_pesanan" value="<?= $data['id'] ?>">
-                    <button type="submit" name="lihat">Lihat</button>
-                </form>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+                        <div class="col">
+                            <div class="d-flex gap-3">
+                                <form action="show.php" method="post">
+                                    <input type="hidden" name="id_pesanan" value="<?= $data['id'] ?>">
+                                    <button type="submit" name="lihat">Lihat</button>
+                                </form>
 
+                                <form action="proses.php" method="post">
+                                    <input type="hidden" name="id_pesanan" value="<?= $data['id'] ?>">
+                                    <button type="submit" name="hapus_pesanan">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </section>
+    </main>
     <?php include __DIR__ . "/../template/footer.php"; ?>
 </body>
 

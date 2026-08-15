@@ -9,27 +9,41 @@
 
     <?php include __DIR__ . "/../template/sidebar.php"; ?>
 
-    <h1>Pengguna</h1>
+    <main id="pengguna">
+        <h1>Pengguna</h1>
 
-    <p>Daftar semua user</p>
+        <p>Daftar semua user :</p>
 
-    <ul>
-        <?php $users = new users(); ?>
-        <?php $no = 0 ?>
-        <?php foreach ($users->get_data() as $data) : ?>
-            <li>
-                <p><?= ++$no ?></p>
-                <p><?= $data['username'] ?></p>
-                <p><?= $data['email'] ?></p>
 
-                <form action="show.php" method="post">
-                    <input type="hidden" name="username" value="<?= $data['username'] ?>">
-                    <button type="submit" name="lihat">Lihat Profile</button>
-                </form>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+        <section class="card me-5">
+            <div class="container text-center overflow-auto">
+                <div class="row bg-info fw-bold p-2">
+                    <div class="col">NO</div>
+                    <div class="col">username</div>
+                    <div class="col">Email</div>
+                    <div class="col">Role</div>
+                    <div class="col">Aksi</div>
+                </div>
+                <?php $users = new users(); ?>
+                <?php $no = 0 ?>
+                <?php foreach ($users->get_data() as $data) : ?>
+                    <div class="row p-2">
+                        <div class="col"><?= ++$no ?></div>
+                        <div class="col"><?= $data['username'] ?></div>
+                        <div class="col"><?= $data['email'] ?></div>
+                        <div class="col"><?= $data['role'] ?></div>
 
+                        <div class="col">
+                            <form action="show.php" method="post">
+                                <input type="hidden" name="username" value="<?= $data['username'] ?>">
+                                <button type="submit" name="lihat">Lihat Profile</button>
+                            </form>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </section>
+    </main>
 
     <?php include __DIR__ . "/../template/footer.php"; ?>
 </body>

@@ -5,7 +5,7 @@ include "../include/database.php";
 // check buat login atau tidak
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("<location:></location:>auth/login.php");
+    header("location:auth/login.php");
     exit();
 }
 

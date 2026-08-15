@@ -1,7 +1,32 @@
+body {
+	--sidebar-width: 15dvw;
+}
+
 #sidebar-nav {
-	width: 20dvw;
+	width: var(--sidebar-width);
+	height: 100dvh;
+
+	translate: 0px -1px;
+
+	background: hsl(240, 100%, 50%, 0.2);
 }
 
 main {
-	margin-left: 20dvw;
+	margin-left: calc(var(--sidebar-width) + 2dvw);
+}
+
+#footer {
+	width: 100dvw;
+	height: 10dvh;
+
+	bottom: 0;
+	left: 0;
+}
+
+#header {
+	width: 100dvw;
+	height: 10dvh;
+
+	top: 0;
+	left: 0;
 }

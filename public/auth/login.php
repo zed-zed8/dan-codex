@@ -22,7 +22,7 @@
         <button type="submit" name="btnlogin">Login</button>
     </form>
 
-    <a href="register.php">register</a>
+    Sudah Register? <a href="register.php">Register Sekarang</a>
 </body>
 
 </html>

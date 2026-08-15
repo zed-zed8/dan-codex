@@ -25,6 +25,8 @@
 
         <button type="submit" name="btnregister">Login</button>
     </form>
+
+    Sudah Register? <a href="login.php">Login Sekarang</a>
 </body>
 
 </html>

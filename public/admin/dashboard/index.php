@@ -13,35 +13,80 @@
         <h1>Selamat Datang Di Dashboard Admin</h1>
         <p>Selamat Kembali, <?= $_SESSION['username']; ?></p>
 
-        <?php $produk = new produk(); ?>
-        <p>Total Produk : <?= $produk->total_produk() ?></p>
 
-        <?php $pesanan = new pesanan(); ?>
-        <p>Total Pesanan : <?= $pesanan->total_pesanan() ?></p>
+        <section class="container mb-4">
+            <div class="row">
+                <?php $produk = new produk(); ?>
+                <div class="card col-6 col-md-4 mb-2 mb-lg-0 col-lg-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Produk</h5>
+                        <h6 class="card-subtitle mb-2 d-flex align-items-center">
+                            <span class="text-muted me-3"><?= $produk->total_produk() ?></span> <span>Produk Tersedia </span>
+                        </h6>
+                    </div>
+                </div>
 
-        <p>Total Pesanan yang sedang diproses : <?= $pesanan->total_pesanan_pending() ?></p>
+                <div class="col-md-1"></div>
 
-        <p>Total Pesanan yang sudah diproses : <?= $pesanan->total_pesanan_done() ?></p>
+                <?php $pesanan = new pesanan(); ?>
+                <div class="card col-6 col-md-4 mb-2 mb-lg-0 col-lg-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Produk</h5>
+                        <h6 class="card-subtitle mb-2 d-flex align-items-center">
+                            <span class="text-muted me-3"><?= $pesanan->total_pesanan() ?></span> <span>Produk Tersedia </span>
+                        </h6>
+                    </div>
+                </div>
 
-        <p>Pesanan Terbaru: </p>
-        <ul>
-            <?php $users = new users(); ?>
-            <?php $no = 0 ?>
-            <?php foreach ($pesanan->get_data() as $data) : ?>
-                <li>
-                    <p><?= ++$no ?></p>
-                    <p><?= $users->get_username($data['user_id']) ?></p>
-                    <p><?= $data['tanggal_dibuat'] ?></p>
-                    <p><?= $data['total_harga'] ?></p>
-                    <p><?= $data['status'] ?></p>
+                <div class="col-md-1"></div>
 
-                    <form action="show.php" method="post">
-                        <input type="hidden" name="id_pesanan" value="<?= $data['id'] ?>">
-                        <button type="submit" name="lihat">Lihat</button>
-                    </form>
-                </li>
-            <?php endforeach; ?>
-        </ul>
+                <div class="card col-6 col-md-4 col-lg-2 mb-2 mb-md-0">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Produk</h5>
+                        <h6 class="card-subtitle mb-2 d-flex align-items-center">
+                            <span class="text-muted me-3"><?= $pesanan->total_pesanan_pending() ?></span> <span>Produk Tersedia </span>
+                        </h6>
+                    </div>
+                </div>
+
+                <div class="col-md-1"></div>
+
+                <div class="card col-6 col-md-4 col-lg-2 mb-2 mb-md-0">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Produk</h5>
+                        <h6 class="card-subtitle mb-2 d-flex align-items-center">
+                            <span class="text-muted me-3"><?= $pesanan->total_pesanan_done() ?></span> <span>Produk Tersedia </span>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="card mb-4 me-5">
+            <div class="card-body">
+                <p>Pesanan Terbaru: </p>
+                <div class="container">
+                    <?php $users = new users(); ?>
+                    <?php $no = 0 ?>
+                    <?php foreach ($pesanan->get_data() as $data) : ?>
+                        <div class="row">
+                            <div class="col"><?= ++$no ?></div>
+                            <div class="col"><?= $users->get_username($data['user_id']) ?></div>
+                            <div class="col"><?= $data['tanggal_dibuat'] ?></div>
+                            <div class="col"><?= $data['total_harga'] ?></div>
+                            <div class="col"><?= $data['status'] ?></div>
+
+                            <div class="col">
+                                <form action="show.php" method="post">
+                                    <input type="hidden" name="id_pesanan" value="<?= $data['id'] ?>">
+                                    <button type="submit" name="lihat">Lihat</button>
+                                </form>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
     </main>
 
     <?php include __DIR__ . "/../template/footer.php"; ?>

@@ -136,4 +136,14 @@ class pesanan extends database
 
         return mysqli_num_rows(mysqli_stmt_get_result($stmt));
     }
+
+    // menghapus data pesanan
+    public function delete(int $pesanan_id): void
+    {
+        $sql = "DELETE FROM pesanan WHERE id = ?";
+        $stmt = mysqli_prepare($this->koneksi, $sql);
+
+        mysqli_stmt_bind_param($stmt, "i", $pesanan_id);
+        mysqli_stmt_execute($stmt);
+    }
 }
