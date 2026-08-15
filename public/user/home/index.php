@@ -17,7 +17,6 @@
             <li>
                 <img src="../../<?= htmlspecialchars($data['path_gambar']) ?>" alt="insert img here" width="100" height="100">
                 <p><?= $data['nama_produk'] ?> RP<?= number_format($data['harga'], 0, ",", ".") ?></p>
-                <p><?= $data['deskripsi'] ?></p>
                 <p><?= $data['kategori'] ?></p>
                 <form action="proses.php" method="post">
                     <input type="hidden" name="id_produk" value="<?= $data['id'] ?>">

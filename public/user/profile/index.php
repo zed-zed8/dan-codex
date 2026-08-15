@@ -7,8 +7,6 @@
 <body>
     <?php include __DIR__ . "/../template/header.php"; ?>
 
-    <?php include __DIR__ . "/../template/sidebar.php"; ?>
-
     <?php $users = new users(); ?>
     <?php foreach ($users->get_user($_SESSION['username']) as $data) : ?>
         <?php $user_id = $data['id']; ?>

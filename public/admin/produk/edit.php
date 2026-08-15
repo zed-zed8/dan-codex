@@ -42,6 +42,7 @@
             <input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg, image/webp">
             <br><br>
 
+            <input type="hidden" name="id_produk" value="<?= $data['id'] ?>">
             <button type="submit" name="edit_produk">Edit Produk</button>
         </form>
     <?php endforeach ?>

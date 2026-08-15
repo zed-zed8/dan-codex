@@ -53,8 +53,6 @@
             <?php endif; ?>
         </ul>
 
-        <!--//! Tambahkan Settings -->
-
         <a href="../../../auth/logout.php">logout</a>
     <?php endforeach; ?>
 

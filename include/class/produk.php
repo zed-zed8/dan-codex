@@ -31,8 +31,8 @@ class produk extends database
         return mysqli_stmt_get_result($stmt);
     }
 
-    // mengedit data produk bedasarkan nama
-    public function edit(string $nama_produk, string $deskripsi, string $kategori, int  $harga, int $stok, string $path_gambar, int $id_produk): mysqli_result|bool
+    // mengedit data produk bedasarkan id
+    public function edit(string $nama_produk, string $deskripsi, string $kategori, int  $harga, int $stok, int $id_produk, string $path_gambar = ""): void
     {
         $sql = "UPDATE produk SET id = ?, nama_produk = ?, deskripsi = ?, kategori = ?,harga = ?, stok = ?, path_gambar = ? WHERE id = ?";
         $stmt = mysqli_prepare($this->koneksi, $sql);
@@ -40,7 +40,13 @@ class produk extends database
         mysqli_stmt_bind_param($stmt, "sssiisi", $nama_produk, $deskripsi, $kategori, $harga, $stok, $path_gambar, $id_produk);
         mysqli_stmt_execute($stmt);
 
-        return mysqli_stmt_get_result($stmt);
+        if ($path_gambar !== "") {
+            $sql = "UPDATE produk SET path_gambar = ? WHERE id = ?";
+            $stmt = mysqli_prepare($this->koneksi, $sql);
+
+            mysqli_stmt_bind_param($stmt, "s", $path_gambar, $id_produk);
+            mysqli_stmt_execute($stmt);
+        }
     }
 
     // menghapus produk
