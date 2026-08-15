@@ -51,7 +51,6 @@ if (isset($_POST['delete'])) {
     $data_produk = mysqli_fetch_assoc($produk->get_data_by_id($id_produk));
     $path_gambar = $data_produk['path_gambar'];
 
-    //! fix delete file also
     unlink("../../$path_gambar");
     $produk->delete($id_produk);
 }
