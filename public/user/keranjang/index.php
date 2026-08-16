@@ -7,6 +7,11 @@
 <body>
     <?php include __DIR__ . "/../template/header.php"; ?>
 
+    <?php echo "<pre>";
+    var_dump($_SESSION);
+    $_SESSION['jumlah'] = [];
+    echo "</pre>";; ?>
+
     <form action="proses.php" method="post">
         <h1>Keranjang</h1>
 
@@ -14,6 +19,7 @@
             <?php
             $keranjang = $_SESSION['keranjang'];
             $produk = new produk();
+            $no = 0;
             ?>
             <?php foreach ($keranjang as $data) : ?>
                 <?php foreach ($produk->get_data_by_id($data) as $data2) : ?>
@@ -23,7 +29,8 @@
                             <?= $data2['nama_produk'] ?> RP<?= number_format($data2['harga'], 0, ",", ".") ?> <?= $data2['kategori'] ?>
 
                             <label for="<?= $data2 ?>">Masukkan Jumlah</label>
-                            <input type="number" name="jumlah[]" id="<?= $data2 ?>" value="1">
+                            <input type="number" name="jumlah[]" id="jumlah-<?= $data2['id'] ?>" value="1">
+                            <a href="proses.php?hapus=true&id=<?= $data2['id'] ?>&no=<?= $no++ ?>">Hapus dari keranjang</a>
                         </p>
                     </li>
                 <?php endforeach ?>

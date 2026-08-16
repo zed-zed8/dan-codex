@@ -1,4 +1,3 @@
-<!-- Bikin Proses membeli -->
 <?php
 
 include __DIR__ . "/../template/include.php";
@@ -7,6 +6,20 @@ if (isset($_POST['beli'])) {
     $jumlah = $_POST['jumlah'];
     $_SESSION['jumlah'] = $jumlah;
     header("location:checkout.php");
+    exit();
+}
+
+if (isset($_GET['hapus'])) {
+    $id = $_GET['id'];
+    $no = $_GET['no'];
+    unset($_SESSION['keranjang'][$no]);
+    unset($_SESSION['jumlah'][$no]);
+
+    // reset numbering
+    $_SESSION['keranjang'] = array_values($_SESSION['keranjang']);
+    $_SESSION['jumlah'] = array_values($_SESSION['jumlah']);
+
+    header("location:index.php");
     exit();
 }
 

@@ -15,6 +15,7 @@ $users = new users();
 switch ($users->userCheck($_SESSION['username'])) {
     case 'user':
         $_SESSION['keranjang'] = [];
+        $_SESSION['jumlah'] = [];
         header("location:user/home");
         exit();
 
