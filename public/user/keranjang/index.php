@@ -8,7 +8,6 @@
     <?php include __DIR__ . "/../template/header.php"; ?>
 
     <form action="proses.php" method="post">
-
         <h1>Keranjang</h1>
 
         <ul>
@@ -24,14 +23,18 @@
                             <?= $data2['nama_produk'] ?> RP<?= number_format($data2['harga'], 0, ",", ".") ?> <?= $data2['kategori'] ?>
 
                             <label for="<?= $data2 ?>">Masukkan Jumlah</label>
-                            <input type="number" name="jumlah[]" id="<?= $data2 ?>">
+                            <input type="number" name="jumlah[]" id="<?= $data2 ?>" value="1">
                         </p>
                     </li>
                 <?php endforeach ?>
             <?php endforeach ?>
         </ul>
 
-        <button type="submit" name="beli">Beli</button>
+        <?php if ($_SESSION['keranjang'] !== []) : ?>
+            <button type="submit" name="beli">Beli</button>
+        <?php else : ?>
+            <p>keranjang kosong</p>
+        <?php endif; ?>
     </form>
 
     <?php include __DIR__ . "/../template/footer.php"; ?>

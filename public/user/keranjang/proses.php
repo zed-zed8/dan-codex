@@ -4,8 +4,15 @@
 include __DIR__ . "/../template/include.php";
 
 if (isset($_POST['beli'])) {
-    $session_keranjang = $_SESSION['keranjang'];
     $jumlah = $_POST['jumlah'];
+    $_SESSION['jumlah'] = $jumlah;
+    header("location:checkout.php");
+    exit();
+}
+
+if (isset($_POST['json'])) {
+    $session_keranjang = $_SESSION['keranjang'];
+    $jumlah = $_SESSION['jumlah'];
 
     // membuat isi keranjang + total harga
     $produk = new produk();
@@ -37,8 +44,9 @@ if (isset($_POST['beli'])) {
     $pesanan = new pesanan();
     $pesanan->create($user_id, $total_harga, $isi_keranjang);
 
-    // reset keranjang
+    // reset keranjang dan jumlah
     $_SESSION['keranjang'] = [];
+    $_SESSION['jumlah'] = [];
 }
 
 header("location:../home");
