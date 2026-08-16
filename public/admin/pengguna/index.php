@@ -19,7 +19,7 @@
             <div class="container text-center overflow-auto">
                 <div class="row bg-info fw-bold p-2">
                     <div class="col">NO</div>
-                    <div class="col">username</div>
+                    <div class="col">Username</div>
                     <div class="col">Email</div>
                     <div class="col">Role</div>
                     <div class="col">Aksi</div>
@@ -31,7 +31,11 @@
                         <div class="col"><?= ++$no ?></div>
                         <div class="col"><?= $data['username'] ?></div>
                         <div class="col"><?= $data['email'] ?></div>
-                        <div class="col"><?= $data['role'] ?></div>
+                        <div class="col <?= match ($data['role']) {
+                                            "admin" => "bg-secondary",
+                                            "user" => "bg-success",
+                                        } ?> rounded-3 text-white">
+                            <?= $data['role'] ?></div>
 
                         <div class="col">
                             <form action="show.php" method="post">

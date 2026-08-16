@@ -10,43 +10,88 @@
     <?php include __DIR__ . "/../template/sidebar.php"; ?>
 
     <main id="produk-edit">
-        <a href="index.php">back</a>
+        <div class="m-3 d-flex align-items-center justify-content-start w-100">
+            <div class="w-25 text-start">
+                <a href="index.php">kembali</a>
+            </div>
+            <div class="w-50">
+                <h1>Menambahkan Produk</h1>
+            </div>
+        </div>
 
-        <?php $produk = new produk(); ?>
-        <?php foreach ($produk->get_data_by_id($_POST['id_produk']) as $data) : ?>
-            <form action="proses.php" method="post" enctype="multipart/form-data">
-                <label for="nama_produk">Nama Produk</label><br>
-                <input type="text" name="nama_produk" id="nama_produk" required value="<?= $data['nama_produk'] ?>">
-                <br><br>
+        <section class="card me-5">
+            <?php $produk = new produk(); ?>
+            <?php foreach ($produk->get_data_by_id($_POST['id_produk']) as $data) : ?>
+                <form action="proses.php" method="post" enctype="multipart/form-data">
+                    <div class="container p-3">
+                        <div class="row">
+                            <div class="col">
+                                <label for="nama_produk">Nama Produk</label>
+                            </div>
+                            <div class="col">
+                                <label for="harga">Harga</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="nama_produk" id="nama_produk" required value="<?= $data['nama_produk'] ?>">
+                            </div>
+                            <div class="col">
+                                <input type="number" name="harga" id="harga" required value="<?= $data['harga'] ?>">
+                            </div>
+                        </div>
 
-                <label for="deskripsi">Deskripsi</label><br>
-                <input type="text" name="deskripsi" id="deskripsi" required value="<?= $data['deskripsi'] ?>">
-                <br><br>
+                        <div class="row">
+                            <div class="col">
+                                <label for="deskripsi">Deskripsi</label>
+                            </div>
+                            <div class="col">
+                                <label for="stok">Stok</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="deskripsi" id="deskripsi" required value="<?= $data['deskripsi'] ?>">
+                            </div>
+                            <div class="col">
+                                <input type="number" name="stok" id="stok" required value="<?= $data['stok'] ?>">
+                            </div>
+                        </div>
 
-                <label for="kategori">Kategori</label><br>
-                <select name="kategori" id="kategori">
-                    <option value="Pilih_Kategori" disabled>Pilih Kategori</option>
-                    <option value="alat_tulis" <?= $data['kategori'] == 'alat_tulis' ? "selected" : "" ?>>Alat Tulis</option>
-                </select>
-                <br><br>
+                        <div class="row">
+                            <div class="col">
+                                <div class="h-100 d-flex align-items-end">
+                                    <label for="kategori">Kategori</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <img src="../../<?= htmlspecialchars($data['path_gambar']) ?>" alt="insert img here" width="100" height="100"><br>
+                                <label for="gambar">Foto gambar baru(kalo tidak ada gambar baru lewati saja)</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <select name="kategori" id="kategori">
+                                    <option value="Pilih_Kategori" disabled>Pilih Kategori</option>
+                                    <option value="alat_tulis" <?= $data['kategori'] == 'alat_tulis' ? "selected" : "" ?>>Alat Tulis</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg, image/webp">
+                            </div>
+                        </div>
 
-                <label for="harga">Harga</label><br>
-                <input type="number" name="harga" id="harga" required value="<?= $data['harga'] ?>">
-                <br><br>
+                        <div class="row">
+                            <div class="col">
+                                <input type="hidden" name="id_produk" value="<?= $data['id'] ?>">
+                                <button type="submit" name="edit_produk">Edit Produk</button>
+                            </div>
+                        </div>
 
-                <label for="stok">Stok</label><br>
-                <input type="number" name="stok" id="stok" required value="<?= $data['stok'] ?>">
-                <br><br>
-
-                <img src="../../<?= htmlspecialchars($data['path_gambar']) ?>" alt="insert img here" width="100" height="100">
-                <label for="gambar">Foto gambar baru(kalo tidak ada gambar baru lewati saja)</label><br>
-                <input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg, image/webp">
-                <br><br>
-
-                <input type="hidden" name="id_produk" value="<?= $data['id'] ?>">
-                <button type="submit" name="edit_produk">Edit Produk</button>
-            </form>
-        <?php endforeach ?>
+                    </div>
+                </form>
+            <?php endforeach ?>
+        </section>
     </main>
 
     <?php include __DIR__ . "/../template/footer.php"; ?>

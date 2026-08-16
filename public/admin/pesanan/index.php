@@ -18,7 +18,7 @@
             <div class="container text-center overflow-auto">
                 <div class="row bg-info fw-bold p-2">
                     <div class="col">NO</div>
-                    <div class="col">username</div>
+                    <div class="col">Username</div>
                     <div class="col">Tanggal</div>
                     <div class="col">Total Harga</div>
                     <div class="col">Status</div>
@@ -33,7 +33,12 @@
                         <div class="col"><?= $users->get_username($data['user_id']) ?></div>
                         <div class="col"><?= $data['tanggal_dibuat'] ?></div>
                         <div class="col"><?= $data['total_harga'] ?></div>
-                        <div class="col"><?= $data['status'] ?></div>
+                        <div class="col <?= match ($data['status']) {
+                                            "pending" => "bg-warning",
+                                            "done" => "bg-success",
+                                        } ?> rounded-3">
+                            <?= $data['status'] ?>
+                        </div>
 
                         <div class="col">
                             <div class="d-flex gap-3">

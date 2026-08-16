@@ -10,21 +10,30 @@
     <?php include __DIR__ . "/../template/sidebar.php"; ?>
 
     <main class="produk-show">
-        <a href="index.php">back</a>
+        <div class="my-3">
+            <a href="index.php">kembali</a>
+        </div>
 
-        <ul>
-            <?php $produk = new produk(); ?>
-            <?php foreach ($produk->get_data_by_id($_POST['id_produk']) as $data) : ?>
-                <li>
-                    <img src="../../<?= htmlspecialchars($data['path_gambar']) ?>" alt="insert img here" width="100" height="100">
-                    <p><?= $data['nama_produk'] ?> RP<?= number_format($data['harga'], 0, ",", ".") ?></p>
-                    <p><?= $data['deskripsi'] ?></p>
-                    <p><?= $data['kategori'] ?></p>
-                    <p></p>
-                    <p><?= number_format($data['stok'], 0, ",", ".") ?></p>
-                </li>
-            <?php endforeach ?>
-        </ul>
+        <section class="card me-5">
+            <div class=" d-flex justify-content-center">
+                <?php $produk = new produk(); ?>
+                <?php foreach ($produk->get_data_by_id($_POST['id_produk']) as $data) : ?>
+                    <div class="">
+                        <img src="../../<?= htmlspecialchars($data['path_gambar']) ?>" alt="insert img here" width="300" height="300">
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div calss="col">Nama Produk : <?= $data['nama_produk'] ?></div>
+                            <div class="col">Harga : RP<?= number_format($data['harga'], 0, ",", ".") ?></div>
+                            <div calss="col">Kategori : <?= $data['kategori'] ?></div>
+                            <div calss="col">Stok : <?= number_format($data['stok'], 0, ",", ".") ?></div>
+                            <div class="col mt-2">Desk:</div>
+                            <div calss="col"><?= $data['deskripsi'] ?></div>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            </div>
+        </section>
     </main>
 
     <?php include __DIR__ . "/../template/footer.php"; ?>
