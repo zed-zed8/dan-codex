@@ -36,7 +36,7 @@
                     <label for="password">Password</label>
                 </div>
                 <div class="input-group flex-nowrap">
-                    <input type="password" name="password" id="password" class="w-100 form-control" required aria-label="password" aria-describedby="addon-wrapping">
+                    <input type="password" name="password" id="password" class="w-100 form-control" required placeholder="••••••" aria-label="password" aria-describedby="addon-wrapping">
                 </div>
 
                 <div class="mt-2 text-start">

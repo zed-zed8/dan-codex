@@ -62,9 +62,9 @@
             </div>
         </section>
 
-        <div class="card mb-4 me-5 rounded-3 overflow-auto" style="height: 12em;">
+        <p class="mb-0">Pesanan Terbaru: </p>
+        <div class="card mb-4 me-5 rounded-3 overflow-auto border-3 border-primary" style="height: 12em;">
             <div class="card-body">
-                <p class="ms-2">Pesanan Terbaru: </p>
                 <div class="container text-center">
                     <?php $users = new users(); ?>
                     <?php $no = 0 ?>

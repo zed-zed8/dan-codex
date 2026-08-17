@@ -11,7 +11,7 @@
 
     <main class="pesanan-show">
         <div class="my-3">
-            <a href="index.php">kembali</a>
+            <a href="index.php" class="btn btn-primary">kembali</a>
         </div>
 
         <section class="card me-5 overflow-auto" style="height: 22em;">

@@ -44,12 +44,12 @@
                             <div class="d-flex gap-3">
                                 <form action="show.php" method="post">
                                     <input type="hidden" name="id_pesanan" value="<?= $data['id'] ?>">
-                                    <button type="submit" name="lihat">Lihat</button>
+                                    <button type="submit" name="lihat" class="btn btn-primary">Lihat</button>
                                 </form>
 
                                 <form action="proses.php" method="post">
                                     <input type="hidden" name="id_pesanan" value="<?= $data['id'] ?>">
-                                    <button type="submit" name="hapus_pesanan">Delete</button>
+                                    <button type="submit" name="hapus_pesanan" class="btn btn-danger">Delete</button>
                                 </form>
                             </div>
                         </div>
