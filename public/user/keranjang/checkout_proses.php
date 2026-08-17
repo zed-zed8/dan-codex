@@ -98,19 +98,19 @@ try {
 
             <form action="proses.php" method="post" id="form">
 
-                <label for="first_name">First Name</label><br>
+                <label for="first_name">Nama Depan</label><br>
                 <input type="text" name="first_name" id="first_name" value="<?= $first_name ?>" disabled>
                 <br><br>
 
-                <label for="last_name">Last Name</label><br>
+                <label for="last_name">Nama Belakang</label><br>
                 <input type="text" name="last_name" id="last_name" value="<?= $last_name ?>" disabled>
                 <br><br>
 
-                <label for="email">Email Address</label><br>
+                <label for="email">Alamat Email</label><br>
                 <input type="email" name="email" id="email" value="<?= $email ?>" disabled>
                 <br><br>
 
-                <label for="phone">Phone Number</label><br>
+                <label for="phone">NOmor Telepon</label><br>
                 <input type="tel" name="phone" id="phone" value="<?= $phone ?>" disabled>
                 <br><br>
 

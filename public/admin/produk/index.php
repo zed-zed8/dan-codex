@@ -10,10 +10,12 @@
     <?php include __DIR__ . "/../template/sidebar.php"; ?>
 
     <main class="produk">
-        <a href="create.php">Tambah Produk</a>
+        <div class="my-2">
+            <a href="create.php" class="btn btn-primary">Tambah Produk</a>
+        </div>
 
-        <section class="card p-3 me-5">
-            <div class="d-grid" style="grid-auto-flow: column; grid-template-columns: 1fr 1fr 1fr; grid-auto-rows: 1fr;">
+        <section class="card p-3 me-5 overflow-auto" style="height: 25em;">
+            <div class="d-grid" style="grid-template-columns: repeat(4, 1fr); gap: 1em; grid-auto-rows: 1fr;">
                 <?php $produk = new produk(); ?>
                 <?php foreach ($produk->get_data() as $data) : ?>
                     <div class="card-body bg-info container" style="width: 200px;">
@@ -48,13 +50,13 @@
                                 <div class="">
                                     <form action="edit.php" method="post">
                                         <input type="hidden" name="id_produk" value="<?= $data['id'] ?>">
-                                        <button type="submit">Edit</button>
+                                        <button type="submit" class="btn btn-primary">Edit</button>
                                     </form>
                                 </div>
                                 <div class="">
                                     <form action="proses.php" method="post">
                                         <input type="hidden" name="id_produk" value="<?= $data['id'] ?>">
-                                        <button type="submit" name="delete">Delete</button>
+                                        <button type="submit" name="delete" class="btn btn-danger">Delete</button>
                                     </form>
                                 </div>
                             </div>

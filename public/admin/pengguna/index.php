@@ -15,7 +15,7 @@
         <p>Daftar semua user :</p>
 
 
-        <section class="card me-5">
+        <section class="card me-5 overflow-auto" style="height: 22em;">
             <div class="container text-center overflow-auto">
                 <div class="row bg-info fw-bold p-2">
                     <div class="col">NO</div>
@@ -40,7 +40,7 @@
                         <div class="col">
                             <form action="show.php" method="post">
                                 <input type="hidden" name="username" value="<?= $data['username'] ?>">
-                                <button type="submit" name="lihat">Lihat Profile</button>
+                                <button type="submit" name="lihat" class="btn btn-primary">Lihat Profile</button>
                             </form>
                         </div>
                     </div>

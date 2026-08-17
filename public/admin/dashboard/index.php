@@ -62,7 +62,7 @@
             </div>
         </section>
 
-        <div class="card mb-4 me-5 rounded-3">
+        <div class="card mb-4 me-5 rounded-3 overflow-auto" style="height: 12em;">
             <div class="card-body">
                 <p class="ms-2">Pesanan Terbaru: </p>
                 <div class="container text-center">

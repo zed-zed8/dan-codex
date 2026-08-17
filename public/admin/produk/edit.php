@@ -11,11 +11,11 @@
 
     <main id="produk-edit">
         <div class="m-3 d-flex align-items-center justify-content-start w-100">
-            <div class="w-25 text-start">
-                <a href="index.php">kembali</a>
+            <div class="text-start">
+                <a href="index.php" class="nav-link text-white btn btn-primary">Kembali</a>
             </div>
-            <div class="w-50">
-                <h1>Menambahkan Produk</h1>
+            <div class="w-75 text-center" text-center>
+                <h1>Mengedit Produk</h1>
             </div>
         </div>
 
@@ -84,7 +84,7 @@
                         <div class="row">
                             <div class="col">
                                 <input type="hidden" name="id_produk" value="<?= $data['id'] ?>">
-                                <button type="submit" name="edit_produk">Edit Produk</button>
+                                <button type="submit" name="edit_produk" class="btn btn-info">Edit Produk</button>
                             </div>
                         </div>
 

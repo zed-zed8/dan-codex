@@ -11,10 +11,10 @@
 
     <main class="produk-create">
         <div class="m-3 d-flex align-items-center justify-content-start w-100">
-            <div class="w-25 text-start">
-                <a href="index.php">kembali</a>
+            <div class="text-start">
+                <a href="index.php" class="nav-link text-white btn btn-primary">Kembali</a>
             </div>
-            <div class="w-50">
+            <div class="w-75 text-center">
                 <h1>Menambahkan Produk</h1>
             </div>
         </div>
@@ -42,7 +42,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <label for="deskripsi">Deskripsi</label>
+                            <label for="kategori">Kategori</label>
                         </div>
                         <div class="col">
                             <label for="stok">Stok</label>
@@ -51,7 +51,14 @@
 
                     <div class="row">
                         <div class="col">
-                            <input type="text" name="deskripsi" id="deskripsi" required>
+                            <select name="kategori" id="kategori">
+                                <option value="Pilih_Kategori" aria-readonly="true">Pilih Kategori</option>
+                                <option value="alat_tulis">Alat Tulis</option>
+                                <option value="buku">Buku</option>
+                                <option value="alat_potong">Alat Potong</option>
+                                <option value="alat_perekat">Alat perekat</option>
+                                <option value="perlengkapan_lukis_dan_seni">Perlengkapan Lukis & Seni</option>
+                            </select>
                         </div>
                         <div class="col">
                             <input type="number" name="stok" id="stok" required>
@@ -60,7 +67,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <label for="kategori">Kategori</label>
+                            <label for="deskripsi">Deskripsi</label>
                         </div>
                         <div class="col">
                             <label for="gambar">Foto gambar</label>
@@ -69,19 +76,21 @@
 
                     <div class="row mb-3">
                         <div class="col">
-                            <select name="kategori" id="kategori">
-                                <option value="Pilih_Kategori" aria-readonly="true">Pilih Kategori</option>
-                                <option value="alat_tulis">Alat Tulis</option>
-                            </select>
+                            <textarea type="text" name="deskripsi" id="deskripsi" maxlength="16383" class="w-50" required style="resize: none; min-height: 100px; max-height: 100%;"></textarea>
                         </div>
                         <div class="col">
-                            <input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg, image/webp" required>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" name="tambah_produk">Tambah Produk</button>
+                            <div class="containe">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="file" name="gambar" id="gambar" accept="image/png, image/jpeg, image/webp" required>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col">
+                                        <button type="submit" name="tambah_produk" class="btn btn-info">Tambah Produk</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

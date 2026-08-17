@@ -11,8 +11,8 @@
                 <div class="">
                     <label for="username">Username</label>
                 </div>
-                <div class="">
-                    <input type="text" name="username" id="username" class="w-100" required>
+                <div class="input-group flex-nowrap">
+                    <input type="text" name="username" id="username" class="w-100 form-control" required placeholder="Masukan Username" aria-label="Username" aria-describedby="addon-wrapping">
                 </div>
                 <?php if (isset($_GET['username'])) : ?>
                     <div class="text-danger" style="font-size: .8em;">
@@ -23,8 +23,8 @@
                 <div class="">
                     <label for="email">Email</label>
                 </div>
-                <div class="">
-                    <input type="email" name="email" id="email" class="w-100" required>
+                <div class="input-group flex-nowrap">
+                    <input type="email" name="email" id="email" class="w-100 form-control" required placeholder="Masukan Email" aria-label="email" aria-describedby="addon-wrapping">
                 </div>
                 <?php if (isset($_GET['email'])) : ?>
                     <div class="text-danger" style="font-size: .8em;">
@@ -35,16 +35,16 @@
                 <div class="">
                     <label for="password">Password</label>
                 </div>
-                <div class="">
-                    <input type="password" name="password" id="password" class="w-100" required>
+                <div class="input-group flex-nowrap">
+                    <input type="password" name="password" id="password" class="w-100 form-control" required aria-label="password" aria-describedby="addon-wrapping">
                 </div>
 
-                <div class="mt-2 text-end">
-                    <button type="submit" name="btnregister" id="btnregister">Register</button>
+                <div class="mt-2 text-start">
+                    <button type="submit" name="btnregister" id="btnregister" class="btn btn-primary">Register</button>
                 </div>
             </form>
 
-            Sudah Register? <a href="login.php">Login Sekarang</a>
+            Sudah Punya Akun? <a href="login.php">Login Sekarang</a>
         </section>
     </main>
 </body>

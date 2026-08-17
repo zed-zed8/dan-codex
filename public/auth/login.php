@@ -12,24 +12,24 @@
                     <label for="username">Username</label>
                 </div>
 
-                <div class="">
-                    <input type="text" name="username" id="username" class="w-100" required>
+                <div class="input-group flex-nowrap">
+                    <input type="text" name="username" id="username" class="w-100 form-control" required placeholder="Masukan Username" aria-label="Username" aria-describedby="addon-wrapping">
                 </div>
 
                 <div class="">
                     <label for="password">Password</label>
                 </div>
-                <div class="">
-                    <input type="password" name="password" id="password" class="w-100" required>
+                <div class="input-group flex-nowrap">
+                    <input type="password" name="password" id="password" class="w-100" required aria-label="Password" aria-describedby="addon-wrapping">
                 </div>
 
-                <div class="mt-2 text-end">
-                    <button type="submit" name="btnlogin">Login</button>
+                <div class="mt-2 text-start">
+                    <button type="submit" name="btnlogin" class="btn btn-primary">Login</button>
                 </div>
             </form>
             <br>
 
-            Sudah Register? <a href="register.php">Register Sekarang</a>
+            Belum Punya Akun? <a href="register.php">Register Sekarang</a>
         </section>
     </main>
 </body>

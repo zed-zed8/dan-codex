@@ -14,7 +14,7 @@
 
         <p>Daftar semua pesanan yang masuk</p>
 
-        <section class="card me-5">
+        <section class="card me-5 overflow-auto" style="height: 22em;">
             <div class="container text-center overflow-auto">
                 <div class="row bg-info fw-bold p-2">
                     <div class="col">NO</div>

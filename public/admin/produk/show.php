@@ -10,8 +10,8 @@
     <?php include __DIR__ . "/../template/sidebar.php"; ?>
 
     <main class="produk-show">
-        <div class="my-3">
-            <a href="index.php">kembali</a>
+        <div class="my-3 btn btn-primary">
+            <a href="index.php" class="nav-link text-white">Kembali</a>
         </div>
 
         <section class="card me-5">

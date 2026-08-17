@@ -6,10 +6,11 @@ $produk = new produk();
 
 if (isset($_POST['tambah_produk'])) {
     $nama_produk = $_POST['nama_produk'];
-    $deskripsi = $_POST['deskripsi'];
     $kategori = $_POST['kategori'];
+    $deskripsi = $_POST['deskripsi'];
     $harga = (int) $_POST['harga'];
     $stok = (int) $_POST['stok'];
+
 
     $file = $_FILES['gambar'];
     // Generasi nama unik
