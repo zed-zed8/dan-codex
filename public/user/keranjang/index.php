@@ -8,7 +8,7 @@
     <?php include __DIR__ . "/../template/header.php"; ?>
 
     <main section="keranjang">
-        <div class="card p-3 my-3">
+        <div class="card p-3 my-3 overflow-auto" style="height: 22em;">
             <form action="proses.php" method="post">
                 <h1>Keranjang</h1>
 
@@ -51,8 +51,8 @@
                                                 <input type="number" name="jumlah[]" id="jumlah-<?= $data2['id'] ?>" value="1" class="w-50">
                                             </span>
 
-                                            <span class="">
-                                                <a href="proses.php?hapus=true&id=<?= $data2['id'] ?>&no=<?= $no++ ?>">Hapus dari keranjang</a>
+                                            <span class="m-1">
+                                                <a href="proses.php?hapus=true&id=<?= $data2['id'] ?>&no=<?= $no++ ?>" class="btn btn-danger">Hapus</a>
                                             </span>
                                         </div>
                                     </div>
@@ -63,7 +63,7 @@
                 <?php endif ?>
 
                 <?php if ($_SESSION['keranjang'] !== []) : ?>
-                    <div class="d-flex justify-content-end me-md-5">
+                    <div class="d-flex justify-content-end me-md-5 mt-3">
                         <button type="submit" name="beli" class="btn" style="background-color: blanchedalmond; border: 2px solid tan;">Beli</button>
                     </div>
                 <?php else : ?>

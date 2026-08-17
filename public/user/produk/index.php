@@ -50,6 +50,12 @@
                         if ($data['kategori'] != $kategori) {
                             continue;
                         }
+                    }
+                    if (substr($_GET['search'], 0, 6) == "harga:") {
+                        $harga = substr($_GET['search'], 6);
+                        if (!str_contains($data['harga'], $harga)) {
+                            continue;
+                        }
                     } else {
                         if (!str_contains($data['nama_produk'], $_GET['search'])) {
                             continue;

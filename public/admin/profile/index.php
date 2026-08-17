@@ -30,8 +30,8 @@
                         <div>Role : <?= $data['role']; ?></div>
                     </div>
 
-                    <div class="btn btn-danger ms-auto me-5">
-                        <a href="../../../auth/logout.php" class="nav-link text-white">Logout</a>
+                    <div class="ms-auto me-5">
+                        <a href="../../../auth/logout.php" class="btn btn-danger">Logout</a>
                     </div>
                 </div>
 
