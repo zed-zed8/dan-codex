@@ -3,8 +3,6 @@
         <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
             <use xlink:href="#bootstrap" />
         </svg>
-        <!-- <span>Logo Koperasi</span> -->
-        <!-- <img src="../../assets/img/img/logo.png" alt="Logo Koperasi" srcset="" width="50" height="50"> -->
 
         <div class="d-flex fw-bold align-items-center">
             <svg viewBox="0 0 16 16" width="48" height="48" xmlns="http://www.w3.org/2000/svg">

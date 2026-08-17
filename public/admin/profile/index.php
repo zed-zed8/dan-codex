@@ -15,7 +15,7 @@
             <?php $user_id = $data['id']; ?>
 
             <h1>Profile Akun</h1>
-            <div class="card pt-2 mt-2 me-5 d-block" style="margin-bottom: 100dvh;">
+            <div class="card pt-2 mt-2 me-5 d-block">
                 <div class="d-flex align-items-center mb-2">
                     <div class="ms-3 me-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">

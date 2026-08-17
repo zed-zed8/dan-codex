@@ -1,0 +1,23 @@
+/* Memperbaiki CSS kustom agar hanya berdampak pada elemen di dalam class .content-body */
+#home h1,
+#home h2,
+#home h3,
+#home h4,
+#home p,
+#home li {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	margin-top: 15px;
+	margin-bottom: 0;
+}
+
+/* Ukuran khusus judul agar tidak terlalu besar */
+#home h1 {
+	font-size: 28px;
+}
+
+/* Ukuran khusus untuk deskripsi teks biasa */
+#home p,
+#home li {
+	font-size: 18px;
+	color: #6c757d; /* Warna teks abu-abu agar elegan */
+}

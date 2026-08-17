@@ -7,11 +7,6 @@
 <body>
     <?php include __DIR__ . "/../template/header.php"; ?>
 
-    <?php echo "<pre>";
-    var_dump($_SESSION);
-    $_SESSION['jumlah'] = [];
-    echo "</pre>";; ?>
-
     <form action="proses.php" method="post">
         <h1>Keranjang</h1>
 

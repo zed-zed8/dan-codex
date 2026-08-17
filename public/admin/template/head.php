@@ -13,6 +13,6 @@
     <title>Assacom</title>
 
     <!-- custom css -->
-    <link rel="stylesheet" href="../../assets/css/main.css">
-    <link rel="stylesheet" href="../../assets/css/admin.css">
+    <link rel="stylesheet" href="../../assets/css/admin/main.css">
+    <link rel="stylesheet" href="../../assets/css/admin/admin.css">
 </head>
