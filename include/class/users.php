@@ -70,4 +70,35 @@ class users extends database
         $data = mysqli_fetch_assoc($result);
         return $data['username'];
     }
+
+    // mengecek jika username udah ada
+    public function is_username_exist(string $username): bool
+    {
+        $result = mysqli_query(
+            $this->koneksi,
+            "SELECT username FROM users"
+        );
+
+        foreach ($result as $data) {
+            if (in_array($username, $data)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    // mengecek jika email udah ada
+    public function is_email_exist(string $email): bool
+    {
+        $result = mysqli_query(
+            $this->koneksi,
+            "SELECT email FROM users"
+        );
+
+        foreach ($result as $data) {
+            if (in_array($email, $data)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

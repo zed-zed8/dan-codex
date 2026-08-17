@@ -1,5 +1,5 @@
 <!-- head -->
-<?php include "../user/template/head.php"; ?>
+<?php include __DIR__ . "/../user/template/head.php"; ?>
 <!-- end head -->
 
 <body>

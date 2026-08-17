@@ -1,5 +1,5 @@
 <!-- head -->
-<?php include "../user/template/head.php"; ?>
+<?php include __DIR__ . "/../user/template/head.php"; ?>
 <!-- end head -->
 
 <body>
@@ -7,13 +7,18 @@
         <section class="p-3" style="border: 2px solid black;">
             <h1 class="text-center">Register</h1>
 
-            <form action="../../auth/proses_register.php" method="post">
+            <form action="../../auth/proses_register.php" method="post" id="form">
                 <div class="">
                     <label for="username">Username</label>
                 </div>
                 <div class="">
                     <input type="text" name="username" id="username" class="w-100" required>
                 </div>
+                <?php if (isset($_GET['username'])) : ?>
+                    <div class="text-danger" style="font-size: .8em;">
+                        <label for="username">Username sudah ada!</label>
+                    </div>
+                <?php endif; ?>
 
                 <div class="">
                     <label for="email">Email</label>
@@ -21,6 +26,11 @@
                 <div class="">
                     <input type="email" name="email" id="email" class="w-100" required>
                 </div>
+                <?php if (isset($_GET['email'])) : ?>
+                    <div class="text-danger" style="font-size: .8em;">
+                        <label for="email">Email sudah dipakai!</label>
+                    </div>
+                <?php endif; ?>
 
                 <div class="">
                     <label for="password">Password</label>
@@ -30,7 +40,7 @@
                 </div>
 
                 <div class="mt-2 text-end">
-                    <button type="submit" name="btnregister">Register</button>
+                    <button type="submit" name="btnregister" id="btnregister">Register</button>
                 </div>
             </form>
 

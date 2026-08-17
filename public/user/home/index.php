@@ -6,12 +6,16 @@
 
 <body>
     <?php include __DIR__ . "/../template/header.php"; ?>
+    <?php echo "<pre>";
+    var_dump($_GET);
+    echo "</pre>";; ?>
 
     <main id="home">
         <h1>Selamat Datang Di Assalaam E-Commerce</h1>
 
         <h2>Halo, <?= $_SESSION['username']; ?></h2>
         <p align="center">WEBSITE E-COMMERCE PENYEDIA KEBUTUHAN SEKOLAH MU</p>
+        <br><br>
 
         <div class="row g-4 justify-content-center">
             <?php $produk = new produk() ?>
