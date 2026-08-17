@@ -13,12 +13,12 @@
         <h2>Halo, <?= $_SESSION['username']; ?></h2>
         <p align="center">WEBSITE E-COMMERCE PENYEDIA KEBUTUHAN SEKOLAH MU</p>
 
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
             <?php $produk = new produk() ?>
             <?php $no = 0 ?>
             <?php foreach ($produk->get_data() as $data) : ?>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card h-100">
+                    <div class="card h-100 border-2 border-info">
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex justify-content-center">
                                 <img src="../../<?= htmlspecialchars($data['path_gambar']) ?>" alt="insert img here" width="240" height="240">

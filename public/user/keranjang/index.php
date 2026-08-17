@@ -7,37 +7,69 @@
 <body>
     <?php include __DIR__ . "/../template/header.php"; ?>
 
-    <form action="proses.php" method="post">
-        <h1>Keranjang</h1>
+    <main section="keranjang">
+        <div class="card p-3 my-3">
+            <form action="proses.php" method="post">
+                <h1>Keranjang</h1>
 
-        <ul>
-            <?php
-            $keranjang = $_SESSION['keranjang'];
-            $produk = new produk();
-            $no = 0;
-            ?>
-            <?php foreach ($keranjang as $data) : ?>
-                <?php foreach ($produk->get_data_by_id($data) as $data2) : ?>
-                    <li>
-                        <p>
-                            <img src="../../<?= htmlspecialchars($data2['path_gambar']) ?>" alt="insert img here" width="50" height="50">
-                            <?= $data2['nama_produk'] ?> RP<?= number_format($data2['harga'], 0, ",", ".") ?> <?= $data2['kategori'] ?>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-grid text-center" style="grid-auto-flow: column;grid-auto-columns: 1fr;">
+                                <span class="">Nama Produk</span>
+                                <span class="">Harga</span>
+                                <span class="">Kategori</span>
+                                <span class="">Jumlah</span>
+                                <span class="">Aksi</span>
+                            </div>
+                        </div>
+                    </div>
 
-                            <label for="<?= $data2 ?>">Masukkan Jumlah</label>
-                            <input type="number" name="jumlah[]" id="jumlah-<?= $data2['id'] ?>" value="1">
-                            <a href="proses.php?hapus=true&id=<?= $data2['id'] ?>&no=<?= $no++ ?>">Hapus dari keranjang</a>
-                        </p>
-                    </li>
-                <?php endforeach ?>
-            <?php endforeach ?>
-        </ul>
+                    <?php
+                    $keranjang = $_SESSION['keranjang'];
+                    $produk = new produk();
+                    $no = 0;
+                    ?>
+                    <?php foreach ($keranjang as $data) : ?>
+                        <?php foreach ($produk->get_data_by_id($data) as $data2) : ?>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="d-grid text-center" style="grid-auto-flow: column;grid-auto-columns: 1fr;">
+                                        <span class="">
+                                            <?= $data2['nama_produk'] ?>
+                                        </span>
+                                        <span class="">
+                                            RP<?= number_format($data2['harga'], 0, ",", ".") ?>
+                                        </span>
+                                        <span class="">
+                                            <?= $data2['kategori'] ?>
+                                        </span>
 
-        <?php if ($_SESSION['keranjang'] !== []) : ?>
-            <button type="submit" name="beli">Beli</button>
-        <?php else : ?>
-            <p>keranjang kosong</p>
-        <?php endif; ?>
-    </form>
+
+                                        <span class="">
+                                            <input type="number" name="jumlah[]" id="jumlah-<?= $data2['id'] ?>" value="1" class="w-50">
+                                        </span>
+
+                                        <span class="">
+                                            <a href="proses.php?hapus=true&id=<?= $data2['id'] ?>&no=<?= $no++ ?>">Hapus dari keranjang</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach ?>
+                    <?php endforeach ?>
+                </div>
+
+                <?php if ($_SESSION['keranjang'] !== []) : ?>
+                    <div class="d-flex justify-content-end me-md-5">
+                        <button type="submit" name="beli" class="btn" style="background-color: blanchedalmond; border: 2px solid tan;">Beli</button>
+                    </div>
+                <?php else : ?>
+                    <p>keranjang kosong</p>
+                <?php endif; ?>
+            </form>
+        </div>
+    </main>
 
     <?php include __DIR__ . "/../template/footer.php"; ?>
 </body>

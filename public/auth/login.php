@@ -7,7 +7,7 @@
         <section class="p-3" style="border: 2px solid black;">
             <h1 class="text-center">Login</h1>
 
-            <form action="/../auth/proses_login.php" method="post">
+            <form action="../../auth/proses_login.php" method="post">
                 <div class="">
                     <label for="username">Username</label>
                 </div>

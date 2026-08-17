@@ -91,30 +91,34 @@ try {
 <body>
     <?php include __DIR__ . "/../template/header.php"; ?>
 
-    <h1>Checkout</h1>
 
-    <label for="first_name">First Name</label><br>
-    <input type="text" name="first_name" id="first_name" value="<?= $first_name ?>" disabled>
-    <br><br>
+    <main section="keranjang">
+        <div class="card p-3 my-3">
+            <h1>Checkout</h1>
 
-    <label for="last_name">Last Name</label><br>
-    <input type="text" name="last_name" id="last_name" value="<?= $last_name ?>" disabled>
-    <br><br>
+            <form action="proses.php" method="post" id="form">
 
-    <label for="email">Email Address</label><br>
-    <input type="email" name="email" id="email" value="<?= $email ?>" disabled>
-    <br><br>
+                <label for="first_name">First Name</label><br>
+                <input type="text" name="first_name" id="first_name" value="<?= $first_name ?>" disabled>
+                <br><br>
 
-    <label for="phone">Phone Number</label><br>
-    <input type="tel" name="phone" id="phone" value="<?= $phone ?>" disabled>
-    <br><br>
+                <label for="last_name">Last Name</label><br>
+                <input type="text" name="last_name" id="last_name" value="<?= $last_name ?>" disabled>
+                <br><br>
 
+                <label for="email">Email Address</label><br>
+                <input type="email" name="email" id="email" value="<?= $email ?>" disabled>
+                <br><br>
 
+                <label for="phone">Phone Number</label><br>
+                <input type="tel" name="phone" id="phone" value="<?= $phone ?>" disabled>
+                <br><br>
 
-    <form action="proses.php" method="post" id="form">
-        <input type="hidden" name="json" id="json" value="">
-        <button type="submit" id="pay-button">Pay!</button>
-    </form>
+                <input type="hidden" name="json" id="json" value="">
+                <button type="submit" id="pay-button" class="btn btn-danger">Pay!</button>
+            </form>
+        </div>
+    </main>
 
     <!-- TODO: Remove ".sandbox" from script src URL for production environment. Also input your client key in "data-client-key" -->
     <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="<?php echo Config::$clientKey; ?>"></script>

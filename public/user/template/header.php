@@ -87,8 +87,4 @@
             </div>
         </div>
     </nav>
-
-    <!-- Pembungkus Konten Utama (Mulai di bawah sini) -->
-    <!-- Menggunakan utilitas Bootstrap 'px-4 pt-4' untuk menggantikan 'margin-left: 75px' secara responsif -->
-    <div class="content-body px-4 pt-4"></div>
 </div>

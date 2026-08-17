@@ -7,7 +7,7 @@
         <section class="p-3" style="border: 2px solid black;">
             <h1 class="text-center">Register</h1>
 
-            <form action="/../auth/proses_register.php" method="post">
+            <form action="../../auth/proses_register.php" method="post">
                 <div class="">
                     <label for="username">Username</label>
                 </div>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="mt-2 text-end">
-                    <button type="submit" name="btnlogin">Login</button>
+                    <button type="submit" name="btnregister">Register</button>
                 </div>
             </form>
 
