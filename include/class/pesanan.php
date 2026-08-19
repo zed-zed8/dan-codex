@@ -3,16 +3,20 @@
 class pesanan extends database
 {
     // membuat pesanan
-    public function create(int $user_id, int $total_harga, array $keranjang): void
+    public function create(int $user_id, int $total_harga, array $keranjang, string $status = "pending"): void
     {
         // isi keranjang [['produk_id' => , 'jumlah' => , 'harga_satuan' => ], ]
-        $tanggal_dibuat = date('Y-m-d');
+        $tanggal_dibuat = date('Y-m-d H:i:s');
 
-        $sql = "INSERT INTO pesanan VALUES (NULL, ?, ?, DEFAULT, ?)";
-        $stmt = mysqli_prepare($this->koneksi, $sql);
+        // $sql = "INSERT INTO pesanan VALUES (NULL, ?, ?, ?, ?)";
+        // $stmt = mysqli_prepare($this->koneksi, $sql);
 
-        mysqli_stmt_bind_param($stmt, "iis", $user_id, $total_harga, $tanggal_dibuat);
-        mysqli_stmt_execute($stmt);
+        // mysqli_stmt_bind_param($stmt, "iiss", $user_id, $total_harga, $status, $tanggal_dibuat);
+        // mysqli_stmt_execute($stmt);
+        mysqli_query(
+            $this->koneksi,
+            "INSERT INTO pesanan VALUES (NULL, '$user_id', '$total_harga', '$status', '$tanggal_dibuat')"
+        );
 
         // mendapatkan id pesanan
         $pesanan_id_query = mysqli_query($this->koneksi, "SELECT id FROM pesanan ORDER BY id DESC LIMIT 1");

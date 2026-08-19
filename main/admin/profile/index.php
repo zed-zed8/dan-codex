@@ -39,42 +39,6 @@
                 <p>Total Pesanan : <?= $pesanan->total_pesanan_by_user($user_id) ?></p>
                 <p>Total Pesanan yang sedang diproses : <?= $pesanan->total_pesanan_pending_by_user($user_id) ?></p>
                 <p>Total Pesanan yang sudah diproses : <?= $pesanan->total_pesanan_done_by_user($user_id) ?></p>
-
-                <p>Pesanan Terbaru: </p>
-                <div class="card m-2">
-                    <div class="container text-center">
-                        <?php $no = 0 ?>
-                        <?php foreach ($pesanan->get_data_user($user_id) as $data2) : ?>
-                            <div class="row p-3">
-                                <div class="col"><?= ++$no ?></div>
-                                <div class="col"><?= $users->get_username($data2['user_id']) ?></div>
-                                <div class="col"><?= $data2['tanggal_dibuat'] ?></div>
-                                <div class="col"><?= $data2['total_harga'] ?></div>
-                                <div class="col <?= match ($data2['status']) {
-                                                    "pending" => "bg-warning",
-                                                    "done" => "bg-success",
-                                                } ?> rounded-3">
-                                    <?= $data2['status'] ?>
-                                </div>
-
-                                <div class="col">
-                                    <form action="show.php" method="post">
-                                        <input type="hidden" name="id_pesanan" value="<?= $data2['id'] ?>">
-                                        <button type="submit" name="lihat">Lihat</button>
-                                    </form>
-                                </div>
-                            </div>
-
-                            <!-- hanya menunjukkan maks 3 pesanan terbaru -->
-                            <?php if ($no >= 1) break; ?>
-                        <?php endforeach; ?>
-
-                        <!-- jika tidak ada pesanan -->
-                        <?php if ($no === 0) : ?>
-                            <p class="text-start">Belum ada pesanan</p>
-                        <?php endif; ?>
-                    </div>
-                </div>
             </div>
 
         <?php endforeach; ?>

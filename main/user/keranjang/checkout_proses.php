@@ -67,11 +67,11 @@ foreach ($users->get_user($_SESSION['username']) as $data) {
 }
 
 // Fill transaction details
-$transaction = array(
+$transaction = [
     'transaction_details' => $transaction_details,
     'customer_details' => $customer_details,
     'item_details' => $item_details,
-);
+];
 
 $snap_token = '';
 try {

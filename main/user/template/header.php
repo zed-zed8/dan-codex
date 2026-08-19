@@ -65,6 +65,9 @@
 
 
             <div class="nav-profile d-flex gap-3 align-items-center">
+                <div class="">
+                    <a href="../riwayat_pesanan" class="text-warning">Riwayat Pesanan</a>
+                </div>
                 <div class="d-flex gap-1 align-items-center">
                     <a href="../keranjang">
                         <span class="<?= basename(getcwd()) == "keranjang" ? "btn btn-outline-info" : "btn btn-outline-warning" ?>">

@@ -48,7 +48,7 @@
 
 
                                             <span class="">
-                                                <input type="number" name="jumlah[]" id="jumlah-<?= $data2['id'] ?>" value="1" class="w-50">
+                                                <input type="number" name="jumlah[]" id="jumlah-<?= $data2['id'] ?>" value="1" min="1" max="<?= $data2['stok'] ?>" class="w-50">
                                             </span>
 
                                             <span class="m-1">

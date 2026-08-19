@@ -26,6 +26,13 @@ if (isset($_GET['hapus'])) {
 if (isset($_POST['json'])) {
     $session_keranjang = $_SESSION['keranjang'];
     $jumlah = $_SESSION['jumlah'];
+    $json = $_POST['json'];
+    $json = json_decode($json, true);
+
+    // echo "<pre>";
+    // var_dump($json);
+    // echo "</pre>";
+    // exit();
 
     // membuat isi keranjang + total harga
     $produk = new produk();
@@ -55,7 +62,11 @@ if (isset($_POST['json'])) {
 
     // create pesanan
     $pesanan = new pesanan();
-    $pesanan->create($user_id, $total_harga, $isi_keranjang);
+    if ($json['status_message'] == "Success, transaction is found") {
+        $pesanan->create($user_id, $total_harga, $isi_keranjang, "done");
+    } else {
+        $pesanan->create($user_id, $total_harga, $isi_keranjang);
+    }
 
     // reset keranjang dan jumlah
     $_SESSION['keranjang'] = [];

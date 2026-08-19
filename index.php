@@ -1,3 +1,3 @@
 <?php
 
-header("location:public/index.php");
+header("location:main/index.php");
