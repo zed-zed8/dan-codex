@@ -84,24 +84,48 @@ class pesanan extends database
         return mysqli_num_rows($data);
     }
 
-    // menghitung total pesanan yang sedang diproses
-    public function total_pesanan_pending(): int
+    // menghitung pendapatan hari ini
+    public function pendapatan_hari_ini(): int
     {
-        $data = mysqli_query(
+        $date = date("Y-m-d");
+        $query = mysqli_query(
             $this->koneksi,
-            "SELECT * FROM pesanan WHERE `status` = 'pending'"
+            "SELECT total_harga FROM pesanan WHERE DATE(tanggal_dibuat) = '$date'"
         );
-        return mysqli_num_rows($data);
+        $data = mysqli_fetch_all($query);
+
+        $total = 0;
+        foreach ($data as $value) {
+            // echo "<pre>";
+            // var_dump($value);
+            // echo "</pre>";
+            $total += $value[0];
+        }
+
+        mysqli_free_result($query);
+        return $total;
     }
 
-    // menghitung total pesanan yang sudah diproses
-    public function total_pesanan_done(): int
+    // menghitung pendapatan bulan ini
+    public function pendapatan_bulan_ini(): int
     {
-        $data = mysqli_query(
+        $date = date("Y-m");
+        $query = mysqli_query(
             $this->koneksi,
-            "SELECT * FROM pesanan WHERE `status` = 'done'"
+            "SELECT total_harga FROM pesanan WHERE DATE_FORMAT(tanggal_dibuat, '%Y-%m') = '$date'"
         );
-        return mysqli_num_rows($data);
+        $data = mysqli_fetch_all($query);
+
+        $total = 0;
+        foreach ($data as $value) {
+            // echo "<pre>";
+            // var_dump($value);
+            // echo "</pre>";
+            $total += $value[0];
+        }
+
+        mysqli_free_result($query);
+        return $total;
     }
 
 

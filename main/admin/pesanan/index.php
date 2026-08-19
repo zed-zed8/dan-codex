@@ -10,9 +10,19 @@
     <?php include __DIR__ . "/../template/sidebar.php"; ?>
 
     <main class="pesanan">
-        <h1>Pesanan</h1>
+        <div class="d-flex justify-content-between">
+            <div class="">
+                <h1>Pesanan</h1>
 
-        <p>Daftar semua pesanan yang masuk</p>
+                <p>Daftar semua pesanan yang masuk</p>
+            </div>
+
+            <div class="me-5">
+                <div class="mt-5">
+                    <input type="week" name="sort" id="sort">
+                </div>
+            </div>
+        </div>
 
         <section class="card me-5 overflow-auto" style="height: 22em;">
             <div class="container text-center overflow-auto">
@@ -59,6 +69,8 @@
         </section>
     </main>
     <?php include __DIR__ . "/../template/footer.php"; ?>
+
+    <script src="../../assets/js/admin/sort_pesanan.js" defer></script>
 </body>
 
 </html>

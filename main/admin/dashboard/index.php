@@ -29,6 +29,29 @@
                 <div class="col-md-1"></div>
 
                 <?php $pesanan = new pesanan(); ?>
+
+                <div class="card border-3 border-primary col-6 col-md-4 col-lg-2 mb-2 mb-md-0">
+                    <div class="card-body d-flex flex-column align-items-stretch justify-content-around">
+                        <h5 class="card-title text-primary ">Pendapatan Hari Ini</h5>
+                        <h6 class="card-subtitle mb-2 d-flex align-items-center">
+                            <span class="text-muted me-3"><?= number_format($pesanan->pendapatan_hari_ini(), 0, ",", ".") ?></span> <span>Rupiah</span>
+                        </h6>
+                    </div>
+                </div>
+
+                <div class="col-md-1"></div>
+
+                <div class="card border-3 border-primary col-6 col-md-4 col-lg-2 mb-2 mb-md-0">
+                    <div class="card-body d-flex flex-column align-items-stretch justify-content-around">
+                        <h5 class="card-title text-primary ">Pendapatan Bulan Ini</h5>
+                        <h6 class="card-subtitle mb-2 d-flex align-items-center">
+                            <span class="text-muted me-3"><?= number_format($pesanan->pendapatan_bulan_ini(), 0, ",", ".") ?></span> <span>Rupiah</span>
+                        </h6>
+                    </div>
+                </div>
+
+                <div class="col-md-1"></div>
+
                 <div class="card border-3 border-primary col-6 col-md-4 mb-2 mb-lg-0 col-lg-2">
                     <div class="card-body d-flex flex-column align-items-stretch justify-content-around">
                         <h5 class="card-title text-primary">Total Pesanan</h5>
@@ -38,27 +61,6 @@
                     </div>
                 </div>
 
-                <div class="col-md-1"></div>
-
-                <div class="card border-3 border-primary col-6 col-md-4 col-lg-2 mb-2 mb-md-0">
-                    <div class="card-body d-flex flex-column align-items-stretch justify-content-around">
-                        <h5 class="card-title text-primary ">Total Pesanan pending</h5>
-                        <h6 class="card-subtitle mb-2 d-flex align-items-center">
-                            <span class="text-muted me-3"><?= $pesanan->total_pesanan_pending() ?></span> <span>Pesanan Pending</span>
-                        </h6>
-                    </div>
-                </div>
-
-                <div class="col-md-1"></div>
-
-                <div class="card border-3 border-primary col-6 col-md-4 col-lg-2 mb-2 mb-md-0">
-                    <div class="card-body d-flex flex-column align-items-stretch justify-content-around">
-                        <h5 class="card-title text-primary">Total Pesanan Selesai</h5>
-                        <h6 class="card-subtitle mb-2 d-flex align-items-center">
-                            <span class="text-muted me-3"><?= $pesanan->total_pesanan_done() ?></span> <span>Pesanan Selesai</span>
-                        </h6>
-                    </div>
-                </div>
             </div>
         </section>
 
