@@ -86,7 +86,7 @@
                             <div class="col">
                                 <form action="show.php" method="post">
                                     <input type="hidden" name="id_pesanan" value="<?= $data['id'] ?>">
-                                    <button type="submit" name="lihat">Lihat</button>
+                                    <button type="submit" name="lihat" class="btn btn-primary">Lihat</button>
                                 </form>
                             </div>
                         </div>
