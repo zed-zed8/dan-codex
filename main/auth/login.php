@@ -7,6 +7,19 @@
         <section class="p-3" style="border: 2px solid black;">
             <h1 class="text-center">Login</h1>
 
+            <?php if (isset($_GET['login']) && $_GET['login'] === 'fail') : ?>
+                <div class="alert alert-danger py-1 mb-2" role="alert">
+                    <?php
+                    $reason = $_GET['reason'] ?? '';
+                    echo match ($reason) {
+                        'empty'   => 'Username dan password tidak boleh kosong.',
+                        'invalid' => 'Username atau password salah.',
+                        default   => 'Terjadi kesalahan saat login. Coba lagi.',
+                    };
+                    ?>
+                </div>
+            <?php endif; ?>
+
             <form action="../../auth/proses_login.php" method="post">
                 <div class="">
                     <label for="username">Username</label>
