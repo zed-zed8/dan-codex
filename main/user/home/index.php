@@ -50,7 +50,11 @@
                                 <?php if (!in_array($data['id'], $_SESSION['keranjang'])) : ?>
                                     <form action="proses.php" method="post">
                                         <input type="hidden" name="id_produk" value="<?= $data['id'] ?>">
-                                        <button type="submit" name="masuk_keranjang" class="btn btn-primary w-100">Masukan ke keranjang</button>
+                                        <?php if ($data['stok'] >= 1) : ?>
+                                            <button type="submit" name="masuk_keranjang" class="btn btn-primary w-100">Masukan ke keranjang</button>
+                                        <?php else : ?>
+                                            <button disabled="disabled" class="btn btn-secondary w-100">Stok Barang Habis</button>
+                                        <?php endif; ?>
                                     </form>
                                 <?php else : ?>
                                     <button class="btn btn-secondary disabled w-100">Produk Sudah Dalam Keranjang</button>
