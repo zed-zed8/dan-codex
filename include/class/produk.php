@@ -57,7 +57,21 @@ class produk extends database
     // menghapus produk
     public function delete(int $id_produk): void
     {
-        mysqli_query($this->koneksi, "DELETE FROM produk WHERE id = '$id_produk'");
+        try {
+            $sql  = "DELETE FROM produk WHERE id = ?";
+            $stmt = mysqli_prepare($this->koneksi, $sql);
+
+            if (!$stmt) {
+                throw new Exception("Prepare statement gagal: " . mysqli_error($this->koneksi));
+            }
+
+            mysqli_stmt_bind_param($stmt, "i", $id_produk);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+        } catch (Exception $e) {
+            error_log("produk::delete() error: " . $e->getMessage());
+            throw $e;
+        }
     }
 
     public function get_nama(int $id): string

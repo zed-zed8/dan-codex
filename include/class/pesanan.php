@@ -6,29 +6,33 @@ class pesanan extends database
     public function create(int $user_id, int $total_harga, array $keranjang, string $status = "pending"): void
     {
         // isi keranjang [['produk_id' => , 'jumlah' => , 'harga_satuan' => ], ]
-        $tanggal_dibuat = date('Y-m-d H:i:s');
+        try {
+            $tanggal_dibuat = date('Y-m-d H:i:s');
 
-        // $sql = "INSERT INTO pesanan VALUES (NULL, ?, ?, ?, ?)";
-        // $stmt = mysqli_prepare($this->koneksi, $sql);
+            $sql  = "INSERT INTO pesanan (user_id, total_harga, status, tanggal_dibuat) VALUES (?, ?, ?, ?)";
+            $stmt = mysqli_prepare($this->koneksi, $sql);
 
-        // mysqli_stmt_bind_param($stmt, "iiss", $user_id, $total_harga, $status, $tanggal_dibuat);
-        // mysqli_stmt_execute($stmt);
-        mysqli_query(
-            $this->koneksi,
-            "INSERT INTO pesanan VALUES (NULL, '$user_id', '$total_harga', '$status', '$tanggal_dibuat')"
-        );
+            if (!$stmt) {
+                throw new Exception("Prepare statement gagal: " . mysqli_error($this->koneksi));
+            }
 
-        // mendapatkan id pesanan
-        $pesanan_id_query = mysqli_query($this->koneksi, "SELECT id FROM pesanan ORDER BY id DESC LIMIT 1");
-        $pesanan_id_data = mysqli_fetch_assoc($pesanan_id_query);
-        $pesanan_id = $pesanan_id_data['id'];
+            mysqli_stmt_bind_param($stmt, "iiss", $user_id, $total_harga, $status, $tanggal_dibuat);
+            mysqli_stmt_execute($stmt);
 
-        // menambahkan detail pesanan
-        foreach ($keranjang as $value) {
-            $produk_id = $value['produk_id'];
-            $jumlah = $value['jumlah'];
-            $harga_satuan = $value['harga_satuan'];
-            $this->create_detail_pesanan($pesanan_id, $produk_id, $jumlah, $harga_satuan);
+            // mendapatkan id pesanan yang baru dibuat
+            $pesanan_id = mysqli_insert_id($this->koneksi);
+            mysqli_stmt_close($stmt);
+
+            // menambahkan detail pesanan
+            foreach ($keranjang as $value) {
+                $produk_id   = $value['produk_id'];
+                $jumlah      = $value['jumlah'];
+                $harga_satuan = $value['harga_satuan'];
+                $this->create_detail_pesanan($pesanan_id, $produk_id, $jumlah, $harga_satuan);
+            }
+        } catch (Exception $e) {
+            error_log("pesanan::create() error: " . $e->getMessage());
+            throw $e;
         }
     }
 
@@ -61,6 +65,19 @@ class pesanan extends database
         return mysqli_stmt_get_result($stmt);
     }
 
+    // mendapatkan data pesanan bedasarkan id
+    public function get_pesanan_by_id(int $pesanan_id): array|null
+    {
+        $sql = "SELECT * FROM pesanan WHERE id = ?";
+        $stmt = mysqli_prepare($this->koneksi, $sql);
+
+        mysqli_stmt_bind_param($stmt, "i", $pesanan_id);
+        mysqli_stmt_execute($stmt);
+
+        $result = mysqli_stmt_get_result($stmt);
+        return mysqli_fetch_assoc($result);
+    }
+
     // mendapatkan semua data bedasarkan user
     public function get_data_user(int $user_id): mysqli_result|bool
     {
@@ -87,45 +104,63 @@ class pesanan extends database
     // menghitung pendapatan hari ini
     public function pendapatan_hari_ini(): int
     {
-        $date = date("Y-m-d");
-        $query = mysqli_query(
-            $this->koneksi,
-            "SELECT total_harga FROM pesanan WHERE DATE(tanggal_dibuat) = '$date'"
-        );
-        $data = mysqli_fetch_all($query);
+        try {
+            $date = date("Y-m-d");
+            $sql  = "SELECT total_harga FROM pesanan WHERE DATE(tanggal_dibuat) = ?";
+            $stmt = mysqli_prepare($this->koneksi, $sql);
 
-        $total = 0;
-        foreach ($data as $value) {
-            // echo "<pre>";
-            // var_dump($value);
-            // echo "</pre>";
-            $total += $value[0];
+            if (!$stmt) {
+                throw new Exception("Prepare statement gagal: " . mysqli_error($this->koneksi));
+            }
+
+            mysqli_stmt_bind_param($stmt, "s", $date);
+            mysqli_stmt_execute($stmt);
+
+            $query = mysqli_stmt_get_result($stmt);
+            $data  = mysqli_fetch_all($query);
+            mysqli_stmt_close($stmt);
+
+            $total = 0;
+            foreach ($data as $value) {
+                $total += $value[0];
+            }
+
+            return $total;
+        } catch (Exception $e) {
+            error_log("pesanan::pendapatan_hari_ini() error: " . $e->getMessage());
+            return 0;
         }
-
-        mysqli_free_result($query);
-        return $total;
     }
 
     // menghitung pendapatan bulan ini
     public function pendapatan_bulan_ini(): int
     {
-        $date = date("Y-m");
-        $query = mysqli_query(
-            $this->koneksi,
-            "SELECT total_harga FROM pesanan WHERE DATE_FORMAT(tanggal_dibuat, '%Y-%m') = '$date'"
-        );
-        $data = mysqli_fetch_all($query);
+        try {
+            $date = date("Y-m");
+            $sql  = "SELECT total_harga FROM pesanan WHERE DATE_FORMAT(tanggal_dibuat, '%Y-%m') = ?";
+            $stmt = mysqli_prepare($this->koneksi, $sql);
 
-        $total = 0;
-        foreach ($data as $value) {
-            // echo "<pre>";
-            // var_dump($value);
-            // echo "</pre>";
-            $total += $value[0];
+            if (!$stmt) {
+                throw new Exception("Prepare statement gagal: " . mysqli_error($this->koneksi));
+            }
+
+            mysqli_stmt_bind_param($stmt, "s", $date);
+            mysqli_stmt_execute($stmt);
+
+            $query = mysqli_stmt_get_result($stmt);
+            $data  = mysqli_fetch_all($query);
+            mysqli_stmt_close($stmt);
+
+            $total = 0;
+            foreach ($data as $value) {
+                $total += $value[0];
+            }
+
+            return $total;
+        } catch (Exception $e) {
+            error_log("pesanan::pendapatan_bulan_ini() error: " . $e->getMessage());
+            return 0;
         }
-
-        mysqli_free_result($query);
-        return $total;
     }
 
 
