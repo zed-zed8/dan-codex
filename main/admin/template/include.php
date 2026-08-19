@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-// hanya admin yang boleh akses halaman admin
+// cek role admin
 try {
     $users      = new users();
     $user_check = $users->userCheck($_SESSION['username']);
@@ -20,7 +20,6 @@ try {
         exit();
     }
 } catch (Exception $e) {
-    error_log("Admin include role check error: " . $e->getMessage());
     header("location:../../auth/login.php");
     exit();
 }

@@ -94,7 +94,6 @@ if (isset($_POST['json'])) {
         $_SESSION['jumlah']    = [];
 
     } catch (Exception $e) {
-        error_log("keranjang/proses.php error: " . $e->getMessage());
         header("location:index.php?error=server");
         exit();
     }
