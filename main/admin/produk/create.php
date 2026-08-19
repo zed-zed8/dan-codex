@@ -53,11 +53,12 @@
                         <div class="col">
                             <select name="kategori" id="kategori">
                                 <option value="Pilih_Kategori" aria-readonly="true">Pilih Kategori</option>
-                                <option value="alat_tulis">Alat Tulis</option>
-                                <option value="buku">Buku</option>
-                                <option value="alat_potong">Alat Potong</option>
-                                <option value="alat_perekat">Alat perekat</option>
-                                <option value="perlengkapan_lukis_dan_seni">Perlengkapan Lukis & Seni</option>
+                                <option value="Alat Tulis">Alat Tulis</option>
+                                <option value="Buku Pelajaran dan Modul">Buku Pelajaran & Modul</option>
+                                <option value="Seragam dan Atribut Sekolah">Seragam & Atribut Sekolah</option>
+                                <option value="Perlengkapan Pramuka">Perlengkapan Pramuka</option>
+                                <option value="Makanan Ringan dan Minuman">Makanan Ringan & Minuman</option>
+                                <option value="Aksesoris dan Lain-lain">Aksesoris & Lain-lain</option>
                             </select>
                         </div>
                         <div class="col">

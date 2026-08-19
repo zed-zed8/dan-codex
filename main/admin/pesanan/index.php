@@ -96,7 +96,7 @@
 
                             $tahun = explode("-", $text)[0];
                             $bulan = explode("-", $text)[1];
-                            $bulan = $nama_bulan[substr($bulan, 1)];
+                            $bulan = $nama_bulan[(int)$bulan - 1];
                             $tanggal = explode("-", $text)[2];
 
                             $text = "$tanggal $bulan $tahun";

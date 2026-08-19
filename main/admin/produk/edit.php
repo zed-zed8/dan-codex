@@ -14,7 +14,7 @@
             <div class="text-start">
                 <a href="index.php" class="nav-link text-white btn btn-primary">Kembali</a>
             </div>
-            <div class="w-75 text-center" text-center>
+            <div class="w-75 text-center">
                 <h1>Mengedit Produk</h1>
             </div>
         </div>
@@ -73,7 +73,12 @@
                             <div class="col">
                                 <select name="kategori" id="kategori">
                                     <option value="Pilih_Kategori" disabled>Pilih Kategori</option>
-                                    <option value="alat_tulis" <?= $data['kategori'] == 'alat_tulis' ? "selected" : "" ?>>Alat Tulis</option>
+                                    <option value="Alat Tulis" <?= in_array($data['kategori'], ['Alat Tulis', 'alat_tulis', 'Alat Potong', 'alat_potong', 'Alat Perekat', 'alat_perekat']) ? "selected" : "" ?>>Alat Tulis</option>
+                                    <option value="Buku Pelajaran dan Modul" <?= in_array($data['kategori'], ['Buku Pelajaran dan Modul', 'Buku', 'buku']) ? "selected" : "" ?>>Buku Pelajaran & Modul</option>
+                                    <option value="Seragam dan Atribut Sekolah" <?= $data['kategori'] == 'Seragam dan Atribut Sekolah' ? "selected" : "" ?>>Seragam & Atribut Sekolah</option>
+                                    <option value="Perlengkapan Pramuka" <?= $data['kategori'] == 'Perlengkapan Pramuka' ? "selected" : "" ?>>Perlengkapan Pramuka</option>
+                                    <option value="Makanan Ringan dan Minuman" <?= $data['kategori'] == 'Makanan Ringan dan Minuman' ? "selected" : "" ?>>Makanan Ringan & Minuman</option>
+                                    <option value="Aksesoris dan Lain-lain" <?= in_array($data['kategori'], ['Aksesoris dan Lain-lain', 'Perlengkapan Lukis dan Seni', 'perlengkapan_lukis_dan_seni']) ? "selected" : "" ?>>Aksesoris & Lain-lain</option>
                                 </select>
                             </div>
                             <div class="col">

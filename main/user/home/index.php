@@ -27,7 +27,7 @@
 
                             <div class="d-flex">
                                 <h5 class="card-title mb-0">
-                                    <?php echo $data['nama_produk']; ?>
+                                    <?php echo htmlspecialchars($data['nama_produk']); ?>
                                 </h5>
                                 <span class="fw-bold mb-1 w-100 text-end">
                                     RP <?= number_format($data['harga'], 0, ',', '.'); ?>
@@ -42,7 +42,7 @@
 
                             <div class="mb-3">
                                 <p class="card-text">
-                                    <?php echo $data['deskripsi']; ?>
+                                    <?php echo htmlspecialchars($data['deskripsi']); ?>
                                 </p>
                             </div>
 

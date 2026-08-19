@@ -73,14 +73,14 @@
 
                                 <div class="d-flex">
                                     <h5 class="card-title mb-0" name="nama-produk">
-                                        <?php echo $data['nama_produk']; ?>
+                                        <?php echo htmlspecialchars($data['nama_produk']); ?>
                                     </h5>
                                     <span class="fw-bold mb-1 w-100 text-end" name="harga-produk">
                                         RP <?= number_format($data['harga'], 0, ',', '.'); ?>
                                     </span>
 
                                     <!-- to help with sorting -->
-                                    <?= "<" . $data['nama_produk'] . "></" . $data['nama_produk'] . ">" ?>
+                                    <?= "<" . htmlspecialchars($data['nama_produk']) . "></" . htmlspecialchars($data['nama_produk']) . ">" ?>
                                 </div>
 
                                 <div class="text-muted" style="font-size: .8em;">
@@ -91,7 +91,7 @@
 
                                 <div class="mb-2">
                                     <p class="card-text text-truncate">
-                                        <?php echo $data['deskripsi']; ?>
+                                        <?php echo htmlspecialchars($data['deskripsi']); ?>
                                     </p>
                                 </div>
 

@@ -21,7 +21,7 @@
                     <div class="w-100">
                         <div class="d-flex mt-2">
                             <h1 class="card-title mb-0 w-100">
-                                <?php echo $data['nama_produk']; ?>
+                                <?php echo htmlspecialchars($data['nama_produk']); ?>
                             </h1>
                             <h3 class="fw-bold mb-1 w-100 text-end">
                                 RP <?= number_format($data['harga'], 0, ',', '.'); ?>
@@ -36,7 +36,7 @@
 
                         <div class="mb-2 overflow-auto">
                             <p class="card-text">
-                                <?php echo $data['deskripsi']; ?>
+                                <?php echo htmlspecialchars($data['deskripsi']); ?>
                             </p>
                         </div>
 
