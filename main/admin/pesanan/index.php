@@ -18,9 +18,19 @@
             </div>
 
             <div class="me-5">
-                <div class="mt-5">
-                    <input type="week" name="sort" id="sort">
-                </div>
+                <form action="" method="get">
+                    <div class="d-flex mt-5 gap-3">
+                        <div class="fw-bold">
+                            <label for="tanggal_awal">Tanggal Awal: </label>
+                            <input type="date" name="tanggal_awal" id="tanggal_awal" required>
+                        </div>
+                        <div class="fw-bold">
+                            <label for="tanggal_akhir">Tanggal Akhir: </label>
+                            <input type="date" name="tanggal_akhir" id="tanggal_akhir" required>
+                        </div>
+                        <button type="submit" name="sort" class="btn btn-warning">Sort</button>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -38,10 +48,51 @@
                 <?php $users = new users(); ?>
                 <?php $no = 0 ?>
                 <?php foreach ($pesanan->get_data() as $data) : ?>
+                    <?php
+                    if (!empty($_GET)) {
+                        $tanggal_awal  = $_GET['tanggal_awal'];
+                        $tanggal_akhir = $_GET['tanggal_akhir'];
+                        $tanggal_data  = explode(" ", $data['tanggal_dibuat'])[0];
+
+                        if ($tanggal_data < $tanggal_awal || $tanggal_data > $tanggal_akhir) {
+                            continue;
+                        }
+                    }
+                    ?>
                     <div class="row p-2">
                         <div class="col"><?= ++$no ?></div>
                         <div class="col"><?= $users->get_username($data['user_id']) ?></div>
-                        <div class="col"><?= $data['tanggal_dibuat'] ?></div>
+
+                        <div class="col">
+                            <?php
+                            $text = explode(" ", $data['tanggal_dibuat'])[0];
+
+                            $nama_bulan = [
+                                'Januari',
+                                'Februari',
+                                'Maret',
+                                'April',
+                                'Mei',
+                                'Juni',
+                                'Juli',
+                                'Agustus',
+                                'September',
+                                'Oktober',
+                                'November',
+                                'Desember'
+                            ];
+
+                            $tahun = explode("-", $text)[0];
+                            $bulan = explode("-", $text)[1];
+                            $bulan = $nama_bulan[substr($bulan, 1)];
+                            $tanggal = explode("-", $text)[2];
+
+                            $text = "$tanggal $bulan $tahun";
+
+                            echo $text;
+                            ?>
+                        </div>
+
                         <div class="col"><?= $data['total_harga'] ?></div>
                         <div class="col <?= match ($data['status']) {
                                             "pending" => "bg-warning",
