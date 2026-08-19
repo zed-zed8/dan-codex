@@ -36,8 +36,12 @@ if (isset($_POST['edit_produk'])) {
 
 
     $file = $_FILES['gambar'];
+    // echo "<pre>";
+    // var_dump($file);
+    // echo "</pre>";
+
     // check file ada
-    if ($file !== "") {
+    if ($file['name'] !== "") {
         // mengahapus gambar sebelumnya
         $data_produk = mysqli_fetch_assoc($produk->get_data_by_id($id_produk));
         $path_gambar = $data_produk['path_gambar'];

@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="row mb-2">
-                            <div class="col">Stok : <?= number_format($data['stok'], 0, ",", ".") ?></div>
+                            <div class="col <?= $data['stok'] == 0 ? "text-danger" : "" ?>">Stok : <?= number_format($data['stok'], 0, ",", ".") ?> <?= $data['stok'] == 0 ? "!" : "" ?></div>
                         </div>
 
                         <div class="row mb-2">

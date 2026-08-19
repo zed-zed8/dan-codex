@@ -21,10 +21,10 @@ if (isset($_POST['btnlogin'])) {
         // Free result set
         mysqli_free_result($result);
 
-        header("location:../public/index.php");
+        header("location:../main/index.php");
     }
 
     mysqli_free_result($result);
-    header("location:../public/index.php");
+    header("location:../main/index.php");
     exit();
 }

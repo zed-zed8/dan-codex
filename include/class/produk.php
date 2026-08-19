@@ -34,18 +34,23 @@ class produk extends database
     // mengedit data produk bedasarkan id
     public function edit(string $nama_produk, string $deskripsi, string $kategori, int  $harga, int $stok, int $id_produk, string $path_gambar = ""): void
     {
-        $sql = "UPDATE produk SET id = ?, nama_produk = ?, deskripsi = ?, kategori = ?,harga = ?, stok = ? WHERE id = ?";
-        $stmt = mysqli_prepare($this->koneksi, $sql);
-
-        mysqli_stmt_bind_param($stmt, "sssiisi", $nama_produk, $deskripsi, $kategori, $harga, $stok, $id_produk);
-        mysqli_stmt_execute($stmt);
-
-        if ($path_gambar !== "") {
-            $sql = "UPDATE produk SET path_gambar = ? WHERE id = ?";
+        try {
+            $sql = "UPDATE produk SET nama_produk = ?, deskripsi = ?, kategori = ?, harga = ?, stok = ? WHERE id = ?";
             $stmt = mysqli_prepare($this->koneksi, $sql);
 
-            mysqli_stmt_bind_param($stmt, "s", $path_gambar, $id_produk);
+            mysqli_stmt_bind_param($stmt, "sssiii", $nama_produk, $deskripsi, $kategori, $harga, $stok, $id_produk);
             mysqli_stmt_execute($stmt);
+
+            if (!empty($path_gambar)) {
+                $sql = "UPDATE produk SET path_gambar = ? WHERE id = ?";
+                $stmt = mysqli_prepare($this->koneksi, $sql);
+
+                mysqli_stmt_bind_param($stmt, "si", $path_gambar, $id_produk);
+                mysqli_stmt_execute($stmt);
+            }
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            throw $e;
         }
     }
 

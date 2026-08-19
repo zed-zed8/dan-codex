@@ -17,5 +17,6 @@
     <link rel="stylesheet" href="../../assets/css/user/user.css">
 
     <!-- title -->
+    <link rel="icon" href="../../assets/img/img/logo.png">
     <title>Assacom</title>
 </head>

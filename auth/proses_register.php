@@ -23,13 +23,13 @@ if (isset($_POST['btnregister'])) {
                 $get_data .= "&$key=fail";
             }
         }
-        header("location:../public/auth/register.php?register=fail" . $get_data);
+        header("location:../main/auth/register.php?register=fail" . $get_data);
         exit();
     }
 
 
     $users->create($username, $email, $password);
 
-    header("location:../public/index.php");
+    header("location:../main/index.php");
     exit();
 }

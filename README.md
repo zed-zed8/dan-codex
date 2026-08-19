@@ -50,7 +50,7 @@ assacom/
 │   │   └── pesanan.php
 │   ├── midtrans-php-master/
 │   └── database.php
-├── public/
+├── main/
 │   ├── admin/
 │   │   ├── dashboard/
 │   │   │   └── index.php
