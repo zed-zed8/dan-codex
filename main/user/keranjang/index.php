@@ -7,12 +7,20 @@
 <body>
     <?php include __DIR__ . "/../template/header.php"; ?>
 
-    <main section="keranjang">
+    <main class="keranjang">
         <div class="card p-3 my-3 overflow-auto" style="height: 22em;">
             <form action="proses.php" method="post">
                 <h1>Keranjang</h1>
 
-                <?php if ($_SESSION['keranjang'] !== []) : ?>
+                <?php if (isset($_GET['error'])) : ?>
+                    <div class="alert alert-danger py-1 mb-2" role="alert">
+                        <?php echo $_GET['error'] === 'stok'
+                            ? 'Jumlah yang diminta melebihi stok yang tersedia!'
+                            : 'Terjadi kesalahan. Silakan coba lagi.'; ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (!empty($_SESSION['keranjang'])) : ?>
                     <div class="container">
                         <div class="row">
                             <div class="col">
@@ -62,7 +70,7 @@
                     </div>
                 <?php endif ?>
 
-                <?php if ($_SESSION['keranjang'] !== []) : ?>
+                <?php if (!empty($_SESSION['keranjang'])) : ?>
                     <div class="d-flex justify-content-end me-md-5 mt-3">
                         <button type="submit" name="beli" class="btn" style="background-color: blanchedalmond; border: 2px solid tan;">Beli</button>
                     </div>
