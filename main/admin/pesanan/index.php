@@ -19,7 +19,19 @@
 
             <div class="me-5">
                 <form action="" method="get">
-                    <div class="d-flex mt-5 gap-3">
+                    <div class="mt-5 bg-danger text-center">
+                        <?php
+                        if (!empty($_GET)) {
+                            $tanggal_awal  = $_GET['tanggal_awal'];
+                            $tanggal_akhir = $_GET['tanggal_akhir'];
+
+                            if ($tanggal_awal >= $tanggal_akhir) : ?>
+                                data yang dimasukkan tidak valid!
+                        <?php endif;
+                        }
+                        ?>
+                    </div>
+                    <div class="d-flex gap-3">
                         <div class="fw-bold">
                             <label for="tanggal_awal">Tanggal Awal: </label>
                             <input type="date" name="tanggal_awal" id="tanggal_awal" required>

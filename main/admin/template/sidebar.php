@@ -32,13 +32,5 @@
                 Pengguna
             </a>
         </li>
-        <li>
-            <a href="../tentang" class="nav-link <?= basename(getcwd()) == "tentang" ? "active" : "text-dark" ?>">
-                <svg class="bi me-2" width="4" height="4">
-                    <use xlink:href="../tentang" />
-                </svg>
-                Tentang
-            </a>
-        </li>
     </ul>
 </nav>
