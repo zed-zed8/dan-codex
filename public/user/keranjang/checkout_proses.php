@@ -10,11 +10,11 @@ include "../template/include.php";
 require_once dirname(__FILE__) . '/../../../include/midtrans-php-master/Midtrans.php';
 // Set Your server key
 // can find in Merchant Portal -> Settings -> Access keys
-Config::$serverKey = 'Mid-server-tBkkWWFAVQspjhtBw_pyQiAr';
-Config::$clientKey = 'Mid-client-CSDIDi3M8oTgkquj';
+Config::$serverKey = 'Mid-server-Ig2nnX4IpQFKYFn1Hqe79FVE';
+Config::$clientKey = 'Mid-client-q0bGpq-NzBy4xUZi';
 
 // Uncomment for production environment
-// Config::$isProduction = true;
+Config::$isProduction = true;
 Config::$isSanitized = Config::$is3ds = true;
 
 // post variable
